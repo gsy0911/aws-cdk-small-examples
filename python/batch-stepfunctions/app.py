@@ -11,32 +11,39 @@ from aws_cdk import (
     aws_events_targets,
 )
 
+ACCOUNT_NUMBER = ""
+REGION = ""
+ECR_REPOSITORY_NAME = ""
+PROJECT_NAME = ""
+
 
 class BatchEnvironment(core.Stack):
     """
-    Batchの環境とそれを実行するStepFunctions + CloudWatch Event環境を作成
+    The class creates
+    * VPC
+    * Batch
+    * StepFunctions
+    * CloudWatch Event
 
     """
-    # 上で作成したECRのリポジトリ名
-    # Batchで実行する際に、このリポジトリからイメージをpullする
-    ECR_REPOSITORY_ARN = "arn:aws:ecr:ap-northeast-1:{ACCOUNT_NUMBER}:repository/{YOUR_REPOSITORY_NAME}"
+    # ECR-arn
+    ECR_REPOSITORY_ARN = f"arn:aws:ecr:{REGION}:{ACCOUNT_NUMBER}:repository/{ECR_REPOSITORY_NAME}"
 
     def __init__(self, app: core.App, stack_name: str, stack_env: str):
         super().__init__(scope=app, id=f"{stack_name}-{stack_env}")
 
-        # CIDRは好きな範囲を
+        # CIDR
         cidr = "192.168.0.0/24"
 
         # === #
         # vpc #
         # === #
-        # VPCはパブリックサブネットしか利用しない場合は、無料で利用可能できる（はずです）
         vpc = aws_ec2.Vpc(
             self,
             id=f"{stack_name}-{stack_env}-vpc",
             cidr=cidr,
             subnet_configuration=[
-                # Public Subnetのnetmaskを定義
+                # Public Subnet
                 aws_ec2.SubnetConfiguration(
                     cidr_mask=28,
                     name=f"{stack_name}-{stack_env}-public",
@@ -83,7 +90,7 @@ class BatchEnvironment(core.Stack):
             )
         )
 
-        # EC2に付与するRole
+        # Role to attach EC2
         instance_role = aws_iam.Role(
             scope=self,
             id=f"instance_role_for_{stack_name}-{stack_env}",
@@ -99,7 +106,7 @@ class BatchEnvironment(core.Stack):
             )
         )
 
-        # S3にアクセスするpolicyの追加
+        # add policy to access S3
         instance_role.add_to_policy(
             aws_iam.PolicyStatement(
                 effect=aws_iam.Effect.ALLOW,
@@ -108,7 +115,7 @@ class BatchEnvironment(core.Stack):
             )
         )
 
-        # CloudWatch Logsにアクセスするpolicyの追加
+        # add policy to access CloudWatch Logs
         instance_role.add_to_policy(
             aws_iam.PolicyStatement(
                 effect=aws_iam.Effect.ALLOW,
@@ -124,15 +131,13 @@ class BatchEnvironment(core.Stack):
             )
         )
 
-        # EC2にロールを付与
+        # attach role to EC2
         instance_profile = aws_iam.CfnInstanceProfile(
             scope=self,
             id=f"instance_profile_for_{stack_name}-{stack_env}",
             instance_profile_name=f"instance_profile_for_{stack_name}-{stack_env}",
             roles=[instance_role.role_name]
         )
-
-        # VPCの続き...
 
         # ===== #
         # batch #
@@ -200,19 +205,19 @@ class BatchEnvironment(core.Stack):
             priority=1
         )
 
-        # ECRリポジトリの取得
+        # ECR repository
         ecr_repository = aws_ecr.Repository.from_repository_arn(
             scope=self,
             id=f"image_for_{stack_name}-{stack_env}",
             repository_arn=self.ECR_REPOSITORY_ARN
         )
 
-        # ECRからイメージの取得
+        # get image from ECR
         container_image = aws_ecs.ContainerImage.from_ecr_repository(
             repository=ecr_repository
         )
 
-        # ジョブ定義
+        # job define
         # ここで、Python scriptで利用する`S3_BUCKET`を環境変数として渡す
         batch_job_definition = aws_batch.JobDefinition(
             scope=self,
