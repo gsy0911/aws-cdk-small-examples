@@ -4,7 +4,7 @@ import boto3
 from pathlib import Path
 
 
-def lambda_handler(event, _):
+def put_lambda_layer_to_s3(event, _):
     # 引数の確認
     if "package_list" not in event:
         return {"error": "[package_list]が存在しません"}
