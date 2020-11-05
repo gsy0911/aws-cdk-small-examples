@@ -237,7 +237,7 @@ class BatchEnvironment(core.Stack):
         # ============= #
         # StepFunctions #
         # ============= #
-
+        # Ref::{keyword} can be replaced with StepFunction input
         command_overrides = [
             "python", "__init__.py",
             "--time", "Ref::time"
@@ -280,8 +280,8 @@ class BatchEnvironment(core.Stack):
             scope=self,
             id=f"DailySFnProcess-{stack_env}",
             schedule=aws_events.Schedule.cron(
-                minute=31,
-                hour=12,
+                minute="30",
+                hour="12",
                 month='*',
                 day="*",
                 year='*'),
