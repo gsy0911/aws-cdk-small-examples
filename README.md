@@ -2,6 +2,14 @@
 
 This repository contains a set of example projects for the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk).
 
+## Environment
+
+The code in this repository is checked under the environment below.
+
+* [![macOS](https://img.shields.io/badge/macOS_Catalina-10.15.7-green.svg)]()
+* [![cdk-version](https://img.shields.io/badge/aws_cdk-1.71.0-green.svg)](https://formulae.brew.sh/formula/aws-cdk)
+* [![PythonVersion](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-377/)
+
 # Python examples
 
 
@@ -23,7 +31,7 @@ $ cdk deploy {target_name}
 
 | Example | Description |
 |:--:|:--:|
-| [batch-stepfunctions]() | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
+| [batch-stepfunctions](./python/batch-stepfunctions) | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
 | [lambda-stepfunctions]() | Creating a multiple Lambda with package, and invoke StepFunctions. |
 | [lambda-creating-lambda_layers]() | Creating a Lambda which puts a zip file for LambdaLayers in S3 |
 | [select-existing-resources]() | Select existing resource, VPC, Lambda, etc. |
