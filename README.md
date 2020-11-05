@@ -8,7 +8,7 @@ The code in this repository is checked under the environment below.
 
 * [![macOS](https://img.shields.io/badge/macOS_Catalina-10.15.7-green.svg)]()
 * [![cdk-version](https://img.shields.io/badge/aws_cdk-1.71.0-green.svg)](https://formulae.brew.sh/formula/aws-cdk)
-* [![PythonVersion](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-377/)
+* [![PythonVersion](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-377/)
 
 # Python examples
 
