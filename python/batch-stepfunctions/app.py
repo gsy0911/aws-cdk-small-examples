@@ -288,12 +288,14 @@ class BatchEnvironment(core.Stack):
         )
         events_daily_process.add_target(aws_events_targets.SfnStateMachine(sfn_daily_process))
 
+
 def main():
     app = core.App()
     BatchEnvironment(app, "your-project", "feature")
     BatchEnvironment(app, "your-project", "dev")
     BatchEnvironment(app, "your-project", "prod")
     app.synth()
+
 
 if __name__ == "__main__":
     main()
