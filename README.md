@@ -1,9 +1,11 @@
 # AWS CDK small Examples
 
-## Python examples
+This repository contains a set of example projects for the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk).
+
+# Python examples
 
 
-### Deploy
+## Deploy
 
 In each directory,
 
@@ -11,7 +13,13 @@ In each directory,
 $ cdk ls
 ```
 
-### Contents
+and then,
+
+```
+$ cdk deploy {target_name}
+```
+
+## Contents
 
 | Example | Description |
 |:--:|:--:|
