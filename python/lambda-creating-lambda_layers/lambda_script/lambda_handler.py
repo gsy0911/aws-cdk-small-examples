@@ -4,28 +4,38 @@ import boto3
 from pathlib import Path
 
 
-def put_lambda_layer_to_s3(event, _):
-    # 引数の確認
+def put_lambda_layer_to_s3(event: dict, _):
+    """
+    
+    Args:
+        event: dict
+            {
+                "package_list": ["pandas", "requests", "cerberus"],
+                "s3_bucket": "your-bucket-name",
+                "s3_key": "your-key-name"
+            }
+    """
+    # check arguments
     if "package_list" not in event:
-        return {"error": "[package_list]が存在しません"}
+        return {"error": "[package_list] not exist"}
     package_list = event['package_list']
     if type(package_list) is not list:
-        return {"error": "[package_list]がlistではありません"}
+        return {"error": "[package_list] is not list"}
     if "s3_bucket" not in event:
-        return {"error": "[s3_bucket]が存在しません"}
+        return {"error": "[s3_bucket] not exist"}
     if "s3_key" not in event:
-        return {"error": "[s3_key]が存在しません"}
+        return {"error": "[s3_key] not exist"}
 
-    # pythonと言うディレクトリを作成し、そこにpackageをインストール
+    # add packages to /tmp/python directory
     mkdir_cmd = "mkdir -p /tmp/python"
     pip_install_cmd = f"pip install -t /tmp/python {' '.join(package_list)}"
     process = (subprocess.Popen(f"{mkdir_cmd} && {pip_install_cmd}", stdout=subprocess.PIPE, shell=True).communicate()[0]).decode('utf-8')
     print('commands...\n'+process)
 
-    # Pathオブジェクトを生成
+    # Path-object
     p = Path("/tmp/python")
 
-    # zipにinstallしたpackageを追加
+    # zip installed package
     with zipfile.ZipFile('/tmp/python_lib.zip', 'w', compression=zipfile.ZIP_DEFLATED) as new_zip:
         for f in list(p.glob("**/*")):
             new_zip.write(f, arcname=str(f).replace("/tmp/", ""))
@@ -35,5 +45,5 @@ def put_lambda_layer_to_s3(event, _):
     bucket = s3.Bucket(event['s3_bucket'])
     bucket.upload_file('/tmp/python_lib.zip', event['s3_key'])
     return {
-        "success": f"s3://{event['s3_bucket']}/{event['s3_key']}に出力しました"
+        "success": f"put file to [s3://{event['s3_bucket']}/{event['s3_key']}]"
     }
