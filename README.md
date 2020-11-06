@@ -33,7 +33,7 @@ $ cdk deploy {target_name}
 |:--:|:--:|
 | [batch-stepfunctions](./python/batch-stepfunctions) | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
 | [lambda-stepfunctions]() | Creating a multiple Lambda with package, and invoke StepFunctions. |
-| [lambda-creating-lambda_layers]() | Creating a Lambda which puts a zip file for LambdaLayers in S3 |
+| [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers) | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
 | [select-existing-resources]() | Select existing resource, VPC, Lambda, etc. |
 | [apigateway-lambda]() |  |
 | [apigateway-stepfunctions]() |  |
