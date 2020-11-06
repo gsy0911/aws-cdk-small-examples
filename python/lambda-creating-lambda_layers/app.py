@@ -22,7 +22,7 @@ class LambdaLayersStack(core.Stack):
             assumed_by=iam.ServicePrincipal("lambda.amazonaws.com")
         )
 
-        # S3にアクセスするpolicyの追加
+        # add policy to access S3
         lambda_s3_access_role.add_to_policy(
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
@@ -31,7 +31,7 @@ class LambdaLayersStack(core.Stack):
             )
         )
 
-        # CloudWatch Logsに出力するpolicyの追加
+        # add policy to access CloudWatch Logs
         lambda_s3_access_role.add_to_policy(
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
@@ -47,10 +47,10 @@ class LambdaLayersStack(core.Stack):
             )
         )
 
-        # lambda to put LambdaLayers to S3
+        # lambda to put LambdaLayers.zip to S3
         _ = lambda_.Function(
             scope=self,
-            id="LambdaLayers",
+            id=f"{sfn_name}-lambda",
             code=lambda_.AssetCode.from_asset("lambda_script"),
             handler="lambda_handler.put_lambda_layer_to_s3",
             timeout=core.Duration.seconds(120),
@@ -62,7 +62,7 @@ class LambdaLayersStack(core.Stack):
 
 def main():
     app = core.App()
-    LambdaLayersStack(app, "your-project", "prod")
+    LambdaLayersStack(app, "LambdaLayer", "prod")
     app.synth()
 
 
