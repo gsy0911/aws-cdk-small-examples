@@ -17,8 +17,8 @@ class LambdaLayersStack(core.Stack):
 
         lambda_s3_access_role = iam.Role(
             scope=self,
-            id=f"lambda_s3_access_role_{self.stack_env}",
-            role_name=f"lambda_s3_access_role_{self.stack_env}",
+            id=f"lambda_s3_access_role_{stack_env}",
+            role_name=f"lambda_s3_access_role_{stack_env}",
             assumed_by=iam.ServicePrincipal("lambda.amazonaws.com")
         )
 
@@ -62,7 +62,7 @@ class LambdaLayersStack(core.Stack):
 
 def main():
     app = core.App()
-    LambdaLayersStack(app, "your-project", "prod")
+    LambdaLayersStack(app, "aws-cdk-small-examples", "prod")
     app.synth()
 
 
