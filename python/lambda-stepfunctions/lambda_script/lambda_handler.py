@@ -7,12 +7,3 @@ def lambda_task(event, _):
     dt = datetime.strptime(time, "%Y-%m-%dT%H:%M:%SZ")
     return {"dt": datetime.strftime(dt, "%Y-%m-%d")}
 
-
-def lambda_fail(event, _):
-    print("fail")
-    return event
-
-
-def lambda_success(event, _):
-    print("success")
-    return event

@@ -27,26 +27,6 @@ class LambdaStepfunctionsStack(core.Stack):
             memory_size=128
         )
 
-        lambda_fail = lambda_.Function(
-            scope=self,
-            id=f"{cfn_name}-lambda-fail",
-            code=lambda_.AssetCode.from_asset("lambda_script"),
-            handler="lambda_handler.lambda_fail",
-            timeout=core.Duration.seconds(10),
-            runtime=self.LAMBDA_PYTHON_RUNTIME,
-            memory_size=128
-        )
-
-        lambda_success = lambda_.Function(
-            scope=self,
-            id=f"{cfn_name}-lambda-success",
-            code=lambda_.AssetCode.from_asset("lambda_script"),
-            handler="lambda_handler.lambda_success",
-            timeout=core.Duration.seconds(10),
-            runtime=self.LAMBDA_PYTHON_RUNTIME,
-            memory_size=128
-        )
-
         # StepFunction Tasks
         sns_source = sfn.Pass(
             scope=self,
@@ -72,34 +52,8 @@ class LambdaStepfunctionsStack(core.Stack):
             output_path="$.arguments.Payload"
         )
 
-        when_success = sfn.Task(
-            scope=self,
-            id=f"{cfn_name}-sfn-lambda-success",
-            task=sfn_tasks.PublishToTopic(
-                topic=lambda_success,
-                message=sfn.TaskInput.from_data_at("$")
-            ),
-            input_path="$",
-            result_path="$",
-            output_path="$"
-        )
-
-        when_fail = sfn.Task(
-            scope=self,
-            id=f"{cfn_name}-sfn-lambda-fail",
-            task=sfn_tasks.PublishToTopic(
-                topic=lambda_fail,
-                message=sfn.TaskInput.from_data_at("$")
-            ),
-            input_path="$",
-            result_path="$",
-            output_path="$"
-        )
-
         # stepfunctions
-        definition = sns_source \
-            .next(arguments_generation.add_catch(when_fail)) \
-            .next(when_success)
+        definition = sns_source.next(arguments_generation)
 
         _ = sfn.StateMachine(
             scope=self,
