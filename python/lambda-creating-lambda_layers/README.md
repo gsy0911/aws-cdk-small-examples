@@ -2,8 +2,24 @@
 
 ## generating resources
 
-![image]()
+![image](./pics/aws-cdk-small-examples.png)
 
+
+## usage
+
+* 1: put lambda json
+
+```json
+{
+  "s3_bucket": "{your_s3_bucket}",
+  "s3_key": "python3.8.zip",
+  "package_list": ["pandas", "cerberus"]
+}
+```
+
+* 2: run lambda
+
+* 3: check your s3 
 
 # References
 
