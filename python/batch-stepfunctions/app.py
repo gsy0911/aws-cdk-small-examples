@@ -218,7 +218,7 @@ class BatchEnvironment(core.Stack):
         )
 
         # job define
-        # ここで、Python scriptで利用する`S3_BUCKET`を環境変数として渡す
+        # pass `S3_BUCKET` as environment argument.
         batch_job_definition = aws_batch.JobDefinition(
             scope=self,
             id=f"job_definition_for_{stack_env}",
@@ -258,10 +258,8 @@ class BatchEnvironment(core.Stack):
                 }
             )
         )
-
-        # 今回は1ステップしかないので、単純ですが複数のステップをつなげたい場合は
-        # batch_task.next(aws_sfn_tasks.JOB).next(aws_sfn_tasks.JOB)
-        # のようにチェインメソッドで渡せます。
+        
+        # `one step` for StepFunctions
         definition = batch_task
 
         sfn_daily_process = aws_sfn.StateMachine(
