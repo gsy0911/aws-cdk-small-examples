@@ -50,7 +50,7 @@ class LambdaLayersStack(core.Stack):
         # lambda to put LambdaLayers.zip to S3
         _ = lambda_.Function(
             scope=self,
-            id=f"{sfn_name}-lambda",
+            id=f"{cfn_name}-lambda",
             code=lambda_.AssetCode.from_asset("lambda_script"),
             handler="lambda_handler.put_lambda_layer_to_s3",
             timeout=core.Duration.seconds(120),
