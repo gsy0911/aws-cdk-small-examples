@@ -50,7 +50,7 @@ class LambdaStepfunctionsStack(core.Stack):
         # StepFunction Tasks
         sns_source = sfn.Pass(
             scope=self,
-            id=f"{cfn_name}-pass",
+            id=f"{cfn_name}-sfn-pass",
             comment="pass example",
             input_path="$",
             result_path="$.source",
