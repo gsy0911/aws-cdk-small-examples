@@ -264,3 +264,5 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/venv,macos,python,pycharm,jupyternotebooks,visualstudiocode
 
 notebooks
+python/*/cdk.out
+
