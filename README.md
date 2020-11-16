@@ -31,13 +31,12 @@ $ cdk deploy {target_name}
 
 | Example | Description |
 |:--:|:--:|
+| [apigw-lambda](./python/apigw_lambda) | Creating a API Gateway method integrated with Lambda. |
 | [batch-stepfunctions](./python/batch-stepfunctions) | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
+| [glue-stepfunctions](./python/glue-stepfunctions) | Creating a Glue Job, and execute on StepFunctions. |
 | [lambda-stepfunctions](./python/lambda-stepfunctions) | Creating a multiple Lambda with package, and invoke StepFunctions. |
 | [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers) | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
-| [glue-stepfunctions](./python/glue-stepfunctions) | Creating a Glue Job, and execute on StepFunctions. |
 | [select-existing-resources]() | Select existing resource, VPC, Lambda, etc. |
-| [apigateway-lambda]() |  |
-| [apigateway-stepfunctions]() |  |
 
 
 ## Contents which will be added ?
