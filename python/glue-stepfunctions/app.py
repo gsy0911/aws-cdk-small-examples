@@ -78,7 +78,7 @@ class GlueStepfunctionsStack(core.Stack):
             command=glue.CfnJob.JobCommandProperty(
                 # glueetl or pythonshell
                 name=self.GLUE_JOB_COMMAND_GLUE_ETL,
-                script_location=glue_code.asset_path
+                script_location=f"s3://{glue_code.s3_bucket_name}/{glue_code.s3_object_key}"
             ),
             # set role-name!
             role=glue_s3_access_role.role_name,
