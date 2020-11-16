@@ -29,15 +29,19 @@ $ cdk deploy {target_name}
 
 ## Contents
 
-| Example | Description |
-|:--:|:--:|
-| [apigw-lambda](./python/apigw_lambda) | Creating a API Gateway method integrated with Lambda. |
-| [batch-stepfunctions](./python/batch-stepfunctions) | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
-| [glue-stepfunctions](./python/glue-stepfunctions) | Creating a Glue Job, and execute on StepFunctions. |
-| [lambda-stepfunctions](./python/lambda-stepfunctions) | Creating a multiple Lambda with package, and invoke StepFunctions. |
-| [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers) | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
-| [select-existing-resources]() | Select existing resource, VPC, Lambda, etc. |
+| Example | Origin | Description |
+|:--:|:--:|:--:|
+| [apigw-lambda](./python/apigw_lambda) |  | Creating a API Gateway method integrated with Lambda. |
+| [batch-stepfunctions](./python/batch-stepfunctions) |  | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
+| [glue-stepfunctions](./python/glue-stepfunctions) |  | Creating a Glue Job, and execute on StepFunctions. |
+| [lambda-stepfunctions](./python/lambda-stepfunctions) |  | Creating a multiple Lambda with package, and invoke StepFunctions. |
+| [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers) |  | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
+| [select-existing-resources]() |  | Select existing resource, VPC, Lambda, etc. |
 
+
+* Origin
+  * None: created by here
+  * [![aws-sample/aws-cdk-example](https://img.shields.io/badge/githube-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples): Official example repository
 
 ## Contents which will be added ?
 
