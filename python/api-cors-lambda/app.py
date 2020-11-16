@@ -29,27 +29,23 @@ class ApiCorsLambdaStack(core.Stack):
             proxy=False,
             integration_responses=[
                 apigw_.IntegrationResponse(
-                    status_code="200"
+                    status_code="200",
+                    response_parameters={
+                        'method.response.header.Access-Control-Allow-Origin': "'*'"
+                    }
                 )
-                # {
-                #     'statusCode': '200',
-                #     'responseParameters': {
-                #         'method.response.header.Access-Control-Allow-Origin': "'*'",
-                #     }
-                # }
         ]
                                                                      )
         example_entity.add_method(
             http_method='GET',
             integration=example_entity_lambda_integration,
             method_responses=[
-                apigw_.MethodResponse(status_code="200")
-                # {
-                # 'statusCode': '200',
-                # 'responseParameters': {
-                # 'method.response.header.Access-Control-Allow-Origin': True,
-                # }
-                # }
+                apigw_.MethodResponse(
+                    status_code="200",
+                    response_parameters={
+                        'method.response.header.Access-Control-Allow-Origin': True,
+                    }
+                )
             ]
         )
 
@@ -59,15 +55,14 @@ class ApiCorsLambdaStack(core.Stack):
     def add_cors_options(apigw_resource):
         mock_integration = apigw_.MockIntegration(
             integration_responses=[
-                apigw_.IntegrationResponse(status_code="200")
-                # {
-                #     'statusCode': '200',
-                #     'responseParameters': {
-                #         'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                #         'method.response.header.Access-Control-Allow-Origin': "'*'",
-                #         'method.response.header.Access-Control-Allow-Methods': "'GET,OPTIONS'"
-                #     }
-                # }
+                apigw_.IntegrationResponse(
+                    status_code="200",
+                    response_parameters={
+                        'method.response.header.Access-Control-Allow-Headers': "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                        'method.response.header.Access-Control-Allow-Origin': "'*'",
+                        'method.response.header.Access-Control-Allow-Methods': "'GET,OPTIONS'"
+                    }
+                ),
             ],
             passthrough_behavior=apigw_.PassthroughBehavior.WHEN_NO_MATCH,
             request_templates={"application/json": "{\"statusCode\":200}"}
@@ -77,16 +72,14 @@ class ApiCorsLambdaStack(core.Stack):
             http_method='OPTIONS',
             integration=mock_integration,
             method_responses=[
-                apigw_.MethodResponse(status_code="200")
-                # {
-                #     'statusCode': '200',
-                #     'responseParameters': {
-                #     'method.response.header.Access-Control-Allow-Headers': True,
-                #     'method.response.header.Access-Control-Allow-Methods': True,
-                #     'method.response.header.Access-Control-Allow-Origin': True,
-                #     }
-                #     }
-                # ],
+                apigw_.MethodResponse(
+                    status_code="200",
+                    response_parameters={
+                        'method.response.header.Access-Control-Allow-Headers': True,
+                        'method.response.header.Access-Control-Allow-Methods': True,
+                        'method.response.header.Access-Control-Allow-Origin': True,
+                    }
+                )
                 ]
             )
 
