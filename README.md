@@ -32,6 +32,7 @@ $ cdk deploy {target_name}
 | Example | Origin | Description |
 |:--:|:--:|:--:|
 | [apigw-lambda](./python/apigw_lambda) |  | Creating a API Gateway method integrated with Lambda. |
+| [api-cors-lambda](./python/apigw_lambda) | [![aws-sample/aws-cdk-example](https://img.shields.io/badge/githube-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples) | - |
 | [batch-stepfunctions](./python/batch-stepfunctions) |  | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
 | [glue-stepfunctions](./python/glue-stepfunctions) |  | Creating a Glue Job, and execute on StepFunctions. |
 | [lambda-stepfunctions](./python/lambda-stepfunctions) |  | Creating a multiple Lambda with package, and invoke StepFunctions. |
