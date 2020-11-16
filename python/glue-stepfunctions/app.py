@@ -72,9 +72,10 @@ class GlueStepfunctionsStack(core.Stack):
         )
 
         # glue
-        glue_job = glue.CfnJob(
+        glue_job_name = f"{cfn_name}-glue-job"
+        _ = glue.CfnJob(
             scope=self,
-            id=f"{cfn_name}-glue-job",
+            id=glue_job_name,
             command=glue.CfnJob.JobCommandProperty(
                 # glueetl or pythonshell
                 name=self.GLUE_JOB_COMMAND_GLUE_ETL,
@@ -89,7 +90,7 @@ class GlueStepfunctionsStack(core.Stack):
         )
 
         # StepFunction Tasks
-        sns_source = sfn.Pass(
+        sfn_task_pass = sfn.Pass(
             scope=self,
             id=f"{cfn_name}-sfn-pass",
             comment="pass example",
@@ -99,20 +100,17 @@ class GlueStepfunctionsStack(core.Stack):
             output_path="$"
         )
 
-        arguments_generation = sfn.Task(
+        sfn_task_glue_job = sfn_tasks.GlueStartJobRun(
             scope=self,
             id=f"{cfn_name}-sfn-lambda-task",
-            task=sfn_tasks.RunGlueJobTask(
-                glue_job_name=f"{cfn_name}-glue-job",
-
-            ),
+            glue_job_name=glue_job_name,
             input_path="$",
-            result_path="$.arguments",
-            output_path="$.arguments.Payload"
+            result_path="$.result",
+            output_path="$.output"
         )
 
         # stepfunctions
-        definition = sns_source.next(arguments_generation)
+        definition = sfn_task_pass.next(sfn_task_glue_job)
 
         _ = sfn.StateMachine(
             scope=self,
