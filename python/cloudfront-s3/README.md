@@ -4,3 +4,6 @@
 
 ## generating resources
 
+![image](./pics/aws-cdk-small-examples-cloudfront-s3.png)
+
+* default domain (not custom domain)
