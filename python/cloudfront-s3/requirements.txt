@@ -1,0 +1,4 @@
+aws-cdk.aws-cloudfront-origins
+aws-cdk.aws-s3-deployment
+aws-cdk.aws-s3
+aws-cdk.aws-s3-assets
