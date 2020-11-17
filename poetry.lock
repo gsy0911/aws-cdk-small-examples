@@ -346,6 +346,23 @@ publication = ">=0.0.3"
 
 [[package]]
 category = "main"
+description = "The CDK Construct Library for AWS CloudFront Origins"
+name = "aws-cdk.aws-cloudfront-origins"
+optional = false
+python-versions = ">=3.6"
+version = "1.73.0"
+
+[package.dependencies]
+"aws-cdk.aws-cloudfront" = "1.73.0"
+"aws-cdk.aws-elasticloadbalancingv2" = "1.73.0"
+"aws-cdk.aws-s3" = "1.73.0"
+"aws-cdk.core" = "1.73.0"
+constructs = ">=3.2.0,<4.0.0"
+jsii = ">=1.14.1,<2.0.0"
+publication = ">=0.0.3"
+
+[[package]]
+category = "main"
 description = "The CDK Construct Library for AWS::CloudWatch"
 name = "aws-cdk.aws-cloudwatch"
 optional = false
@@ -1451,7 +1468,7 @@ version = "1.0.0"
 boto3 = ">=1.9.253,<2"
 
 [metadata]
-content-hash = "a8ad13e8ce50b0764c2ce059712f7705dd715a1580f0ea610f5a32bfb92b107b"
+content-hash = "fe00d8ddaf3187ce034653df6f803cca07e665c514ca2f8067d4fe6673fa69ee"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1527,6 +1544,10 @@ aws-cdk-core = [
 "aws-cdk.aws-cloudfront" = [
     {file = "aws-cdk.aws-cloudfront-1.73.0.tar.gz", hash = "sha256:127c2be3cb85fb3be78931a388ebcd469accf84bbbf8f7918a89b44a97674458"},
     {file = "aws_cdk.aws_cloudfront-1.73.0-py3-none-any.whl", hash = "sha256:75a99019b6f4bf6771d1567ff6a0bfbc221631c0cfe8a5d41d52c46d82bc0524"},
+]
+"aws-cdk.aws-cloudfront-origins" = [
+    {file = "aws-cdk.aws-cloudfront-origins-1.73.0.tar.gz", hash = "sha256:1a4b6d170e17644da97c42c05325fed9030eb36370a5dd62b04d7420e9773609"},
+    {file = "aws_cdk.aws_cloudfront_origins-1.73.0-py3-none-any.whl", hash = "sha256:278332261c0e29afae0b28c92d56828d71a252f60f87ae3ffa1f0a4c00000028"},
 ]
 "aws-cdk.aws-cloudwatch" = [
     {file = "aws-cdk.aws-cloudwatch-1.73.0.tar.gz", hash = "sha256:29f091d7e933db3895079e9d5a510f048c1865bcca440f01666ae609cb9fe265"},

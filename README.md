@@ -32,8 +32,9 @@ $ cdk deploy {target_name}
 | Example | Description |
 |:--:|:--:|
 | [apigw-lambda](./python/apigw_lambda)  | Creating a API Gateway method integrated with Lambda. |
+| [api-cors-lambda](./python/api-cors-lambda) | from [![aws-sample/aws-cdk-example](https://img.shields.io/badge/github-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/api-cors-lambda) |
 | [batch-stepfunctions](./python/batch-stepfunctions)  | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
-| [api-cors-lambda](./python/api-cors-lambda) | from [![aws-sample/aws-cdk-example](https://img.shields.io/badge/githube-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/api-cors-lambda) |
+| [cloudfront-s3](./python/cloudfront-s3)  | Creating a CloudFront using S3. |
 | [glue-stepfunctions](./python/glue-stepfunctions)  | Creating a Glue Job, and execute on StepFunctions. |
 | [lambda-stepfunctions](./python/lambda-stepfunctions)  | Creating a multiple Lambda with package, and invoke StepFunctions. |
 | [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers)  | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
