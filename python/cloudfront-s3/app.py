@@ -1,10 +1,9 @@
 from aws_cdk import (
     core,
     aws_cloudfront as cloud_front,
-    # aws_cloudfron_origins as origin,
+    aws_cloudfront_origins as origin,
     aws_s3 as s3,
-    # aws_s3_deployment as s3_deploy,
-    aws_s3_assets as s3_assets
+    aws_s3_deployment as s3_deploy
 )
 
 
@@ -12,22 +11,38 @@ class CloudFrontS3Stack(core.Stack):
     """
 
     """
+    ORIGIN_PATH = "web/static"
 
     def __init__(self, app: core.App, cfn_name: str, stack_env):
         super().__init__(scope=app, id=f"{cfn_name}-{stack_env}")
 
         s3_bucket = s3.Bucket(
             scope=self,
-            id=f"{cfn_name}-{stack_env}"
+            id=f"{cfn_name}-{stack_env}-bucket",
+            website_index_document="index.html"
         )
 
-        # s3_assets.AssetProps()
+        # upload files in `./html` to the bucket defined above
+        _ = s3_deploy.BucketDeployment(
+            scope=self,
+            id=f"{cfn_name}-{stack_env}-deployments",
+            sources=[s3_deploy.Source.asset("./html")],
+            destination_bucket=s3_bucket,
+            destination_key_prefix=self.ORIGIN_PATH
+        )
 
-        cloud_front_s3 = cloud_front.Distribution(
+        # set S3 as origin
+        s3_origin = origin.S3Origin(
+            bucket=s3_bucket,
+            origin_path=self.ORIGIN_PATH
+        )
+        # create CloudFront Distribution
+        _ = cloud_front.Distribution(
             scope=self,
             id=f"{cfn_name}-{stack_env}",
             default_behavior=cloud_front.BehaviorOptions(
-                origin=None
+                # may warning here, for type mismatched.
+                origin=s3_origin
             )
         )
 
