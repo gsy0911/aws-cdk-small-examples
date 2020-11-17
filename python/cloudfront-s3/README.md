@@ -6,4 +6,15 @@
 
 ![image](./pics/aws-cdk-small-examples-cloudfront-s3.png)
 
-* default domain (not custom domain)
+* S3
+    * generate new `S3 Bucket`
+    * deploy assets to `web/static` in the Bucket
+* CloudFront
+    * use Origin with the Bucket above
+    * default domain (not custom domain)
+
+## result
+
+after you deploy, access via CloudFront-console domain name
+
+![image](./pics/example_result.png)
