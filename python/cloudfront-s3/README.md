@@ -18,3 +18,7 @@
 after you deploy, access via CloudFront-console domain name
 
 ![image](./pics/example_result.png)
+
+# References
+
+* [Qiita for the concept of CloudFront](https://qiita.com/NaokiIshimura/items/46994e67b712831c3016)

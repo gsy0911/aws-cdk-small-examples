@@ -27,6 +27,12 @@ and then,
 $ cdk deploy {target_name}
 ```
 
+finally you should destroy everything.
+
+```
+$ cdk destroy {target_name}
+```
+
 ## Contents
 
 | Example | Description |
@@ -41,20 +47,19 @@ $ cdk deploy {target_name}
 | [select-existing-resources]()  | Select existing resource, VPC, Lambda, etc. |
 
 
-## Contents which will be added ?
+## Contents which will be added
 
-* lambda
-* vpc
+* lambda with LambdaLayer
+* select existing vpc
 * StepFunctions(lambda, SQS, SNS)
-* Glue (Job, Crawler)
-* Athena ?
+* Athena (=Glue Crawler)
 * DynamoDB
-* AWS Batch
+* AWS Batch (ECR + CodeBuild + CodePipeline?)
 * EKS
 * Kinesis
-* API Gateway
-* CodeBuild ?
-* CodeDeploy ?
+* API Gateway (+ custom domain)
+* CloudFront (+ custom domain)
+* Beanstalk ?
 
 # references
 
