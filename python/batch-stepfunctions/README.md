@@ -1,16 +1,16 @@
 # batch-stepfunctions
 
-![image]()
 
 ## generating resources
+
+
+![image](./pics/aws-cdk-small-examples-batch-stepfunction.png)
 
 * VPC
 * AWS Batch
 * StepFunctions
 * CloudWatch Events
 * IAM Role
-
-## 
 
 ## Why using StepFunctions ?
 
