@@ -860,6 +860,25 @@ publication = ">=0.0.3"
 
 [[package]]
 category = "main"
+description = "Constructs for deploying contents to S3 buckets"
+name = "aws-cdk.aws-s3-deployment"
+optional = false
+python-versions = ">=3.6"
+version = "1.73.0"
+
+[package.dependencies]
+"aws-cdk.aws-cloudfront" = "1.73.0"
+"aws-cdk.aws-iam" = "1.73.0"
+"aws-cdk.aws-lambda" = "1.73.0"
+"aws-cdk.aws-s3" = "1.73.0"
+"aws-cdk.aws-s3-assets" = "1.73.0"
+"aws-cdk.core" = "1.73.0"
+constructs = ">=3.2.0,<4.0.0"
+jsii = ">=1.14.1,<2.0.0"
+publication = ">=0.0.3"
+
+[[package]]
+category = "main"
 description = "The CDK Construct Library for the AWS Serverless Application Model (SAM) resources"
 name = "aws-cdk.aws-sam"
 optional = false
@@ -1468,7 +1487,7 @@ version = "1.0.0"
 boto3 = ">=1.9.253,<2"
 
 [metadata]
-content-hash = "fe00d8ddaf3187ce034653df6f803cca07e665c514ca2f8067d4fe6673fa69ee"
+content-hash = "cf2cfe2dfedbaaf837c3fbd1c01c5d9e7dea42ea6d54727b8e137bbeb04fce12"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1652,6 +1671,10 @@ aws-cdk-core = [
 "aws-cdk.aws-s3-assets" = [
     {file = "aws-cdk.aws-s3-assets-1.73.0.tar.gz", hash = "sha256:a35a3dd9c4174593d4b76298189fb22cecbaa4e342dc7687697f61cd0453d41c"},
     {file = "aws_cdk.aws_s3_assets-1.73.0-py3-none-any.whl", hash = "sha256:535b413cc2f4e52701db9ff8a62927ea5fb4067861f5c3551d5873f8d1775ed5"},
+]
+"aws-cdk.aws-s3-deployment" = [
+    {file = "aws-cdk.aws-s3-deployment-1.73.0.tar.gz", hash = "sha256:b7db92754ea40e1afbd6592abab7d39393dc4925e55e0fe61c60263e263fa2eb"},
+    {file = "aws_cdk.aws_s3_deployment-1.73.0-py3-none-any.whl", hash = "sha256:35660beb2f45f552d91e4108f97b917d5e1c32c1841660b5d2b43e4da25f7b71"},
 ]
 "aws-cdk.aws-sam" = [
     {file = "aws-cdk.aws-sam-1.73.0.tar.gz", hash = "sha256:8f203ccd6efbb459ef4c79b07fc388b65b4cd8e05e66ca6407980eebe87593da"},
