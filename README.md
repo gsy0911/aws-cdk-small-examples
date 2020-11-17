@@ -61,6 +61,10 @@ $ cdk destroy {target_name}
 * CloudFront (+ custom domain)
 * Beanstalk ?
 
-# references
+# References
 
 * [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples)
+
+# License
+
+* This library is licensed under the Apache 2.0 License (same as origin).
