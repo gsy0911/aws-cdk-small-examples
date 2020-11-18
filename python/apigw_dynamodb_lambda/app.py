@@ -1,9 +1,7 @@
 from aws_cdk import (
     core,
     aws_lambda as lambda_,
-    aws_dynamodb,
-    aws_events,
-    aws_events_targets,
+    aws_dynamodb
 )
 
 
@@ -16,11 +14,14 @@ class ApigwDynamodbLambdaStack(core.Stack):
 
         # create dynamo table
         demo_table = aws_dynamodb.Table(
-            self, "demo_table",
+            scope=self,
+            id="demo_table",
             partition_key=aws_dynamodb.Attribute(
                 name="id",
                 type=aws_dynamodb.AttributeType.STRING
-            )
+            ),
+            write_capacity=3,
+            read_capacity=3
         )
 
         # create producer lambda function
@@ -51,7 +52,7 @@ class ApigwDynamodbLambdaStack(core.Stack):
 
 def main():
     app = core.App()
-    ApigwDynamodbLambdaStack(app, "ApigwDynamoLambda")
+    ApigwDynamodbLambdaStack(app, "ApigwDynamodbLambda")
     app.synth()
 
 
