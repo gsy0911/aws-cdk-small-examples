@@ -37,8 +37,9 @@ $ cdk destroy {target_name}
 
 | Example | Description |
 |:--:|:--:|
-| [apigw-lambda](./python/apigw_lambda)  | Creating a API Gateway method integrated with Lambda. |
+| [apigw-lambda](./python/apigw-lambda)  | Creating a API Gateway method integrated with Lambda. |
 | [api-cors-lambda](./python/api-cors-lambda) | from [![aws-sample/aws-cdk-example](https://img.shields.io/badge/github-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/api-cors-lambda) |
+| [apigw-dynamodb-lambda](./python/apigw-cors-lambda) | Creating DynamoDB with accessors via Lambda & via API Gateway, based on [![aws-sample/aws-cdk-example](https://img.shields.io/badge/github-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/dynamodb-lambda) |
 | [batch-stepfunctions](./python/batch-stepfunctions)  | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
 | [cloudfront-s3](./python/cloudfront-s3)  | Creating a CloudFront using S3. |
 | [glue-stepfunctions](./python/glue-stepfunctions)  | Creating a Glue Job, and execute on StepFunctions. |
