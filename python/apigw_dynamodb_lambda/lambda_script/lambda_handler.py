@@ -48,13 +48,12 @@ def consumer(event, context):
         scan_data = []
         # print item of the table - see CloudWatch logs
         for i in response['Items']:
-            data = json.dumps(i, cls=DecimalEncoder)
-            scan_data.append(data)
-            print(data)
+            scan_data.append(i)
+            print(i)
 
     return {
         'statusCode': 200,
-        "body": json.dumps({"response": scan_data})
+        "body": json.dumps({"response": scan_data}, cls=DecimalEncoder)
     }
 
 
