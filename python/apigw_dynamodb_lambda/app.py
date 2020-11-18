@@ -1,7 +1,8 @@
 from aws_cdk import (
     core,
     aws_lambda as lambda_,
-    aws_dynamodb
+    aws_dynamodb,
+    aws_apigateway as apigw_
 )
 
 
@@ -9,7 +10,7 @@ class ApigwDynamodbLambdaStack(core.Stack):
 
     LAMBDA_PYTHON_RUNTIME = lambda_.Runtime.PYTHON_3_8
 
-    def __init__(self, scope: core.App, id_: str, **kwargs) -> None:
+    def __init__(self, scope: core.App, id_: str, stack_env: str, **kwargs) -> None:
         super().__init__(scope, id_, **kwargs)
 
         # create dynamo table
@@ -49,10 +50,51 @@ class ApigwDynamodbLambdaStack(core.Stack):
         # grant permission to lambda to read from demo table
         demo_table.grant_read_data(consumer_lambda)
 
+        # api_gateway for root
+        base_api = apigw_.RestApi(
+            scope=self,
+            id=f"{id_}-{stack_env}-apigw",
+            rest_api_name=f"{id_}-{stack_env}-apigw",
+            deploy_options=apigw_.StageOptions(stage_name=stack_env)
+        )
+
+        # add entity
+        api_entity = base_api.root.add_resource("example")
+
+        # consumer
+        api_entity_consumer_lambda = apigw_.LambdaIntegration(
+            handler=consumer_lambda,
+            integration_responses=[
+                apigw_.IntegrationResponse(
+                    status_code="200"
+                )
+            ]
+        )
+        # for GET
+        api_entity.add_method(
+            http_method="GET",
+            integration=api_entity_consumer_lambda
+        )
+
+        # producer
+        api_entity_producer_lambda = apigw_.LambdaIntegration(
+            handler=producer_lambda,
+            integration_responses=[
+                apigw_.IntegrationResponse(
+                    status_code="200"
+                )
+            ]
+        )
+        # for POST
+        api_entity.add_method(
+            http_method="POST",
+            integration=api_entity_producer_lambda
+        )
+
 
 def main():
     app = core.App()
-    ApigwDynamodbLambdaStack(app, "ApigwDynamodbLambda")
+    ApigwDynamodbLambdaStack(app, "ApigwDynamodbLambda", "prod")
     app.synth()
 
 
