@@ -37,18 +37,24 @@ def _decode_payload(event: dict) -> dict:
 
 def consumer(event, context):
     table = dynamodb.Table(TABLE_NAME)
+
+    scan_data = []
     # Scan items in table
     try:
         response = table.scan()
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
+        scan_data = []
         # print item of the table - see CloudWatch logs
         for i in response['Items']:
-            print(json.dumps(i, cls=DecimalEncoder))
+            data = json.dumps(i, cls=DecimalEncoder)
+            scan_data.append(data)
+            print(data)
 
     return {
         'statusCode': 200,
+        "body": json.dumps({"response": scan_data})
     }
 
 
@@ -69,4 +75,5 @@ def producer(event, context):
 
     return {
         'statusCode': 200,
+        "body": json.dumps({"insert": payload})
     }
