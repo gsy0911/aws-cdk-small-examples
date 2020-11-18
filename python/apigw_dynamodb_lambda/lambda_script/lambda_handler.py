@@ -24,6 +24,17 @@ dynamodb = boto3.resource('dynamodb')
 TABLE_NAME = os.environ['TABLE_NAME']
 
 
+def _decode_payload(event: dict) -> dict:
+    # get insert data from apigw
+    if "body" in event:
+        payload = json.loads(event['body'])
+    elif "data" in event:
+        payload = event['data']
+    else:
+        raise ValueError("'body' or 'data' is required.")
+    return payload
+
+
 def consumer(event, context):
     table = dynamodb.Table(TABLE_NAME)
     # Scan items in table
@@ -43,13 +54,16 @@ def consumer(event, context):
 
 def producer(event, context):
     table = dynamodb.Table(TABLE_NAME)
+    # get data from payload
+    payload = _decode_payload(event=event)
+    payload.update({"id": str(uuid.uuid4())})
+
     # put item in table
     response = table.put_item(
-        Item={
-            'id': str(uuid.uuid4())
-        }
+        Item=payload
     )
 
+    print(f"item to insert: {payload}")
     print("PutItem succeeded:")
     print(json.dumps(response, indent=4, cls=DecimalEncoder))
 
