@@ -29,9 +29,9 @@ class ApigwDynamodbLambdaStack(core.Stack):
             id="producer_lambda_function",
             runtime=self.LAMBDA_PYTHON_RUNTIME,
             handler="lambda_handler.producer",
-            code=lambda_.Code.asset("./lambda_script"))
-
-        producer_lambda.add_environment("TABLE_NAME", demo_table.table_name)
+            code=lambda_.Code.asset("./lambda_script"),
+            environment={"TABLE_NAME": demo_table.table_name}
+        )
 
         # grant permission to lambda to write to demo table
         demo_table.grant_write_data(producer_lambda)
@@ -42,22 +42,11 @@ class ApigwDynamodbLambdaStack(core.Stack):
             id="consumer_lambda_function",
             runtime=self.LAMBDA_PYTHON_RUNTIME,
             handler="lambda_handler.consumer",
-            code=lambda_.Code.asset("./lambda_script"))
-
-        consumer_lambda.add_environment("TABLE_NAME", demo_table.table_name)
+            code=lambda_.Code.asset("./lambda_script"),
+            environment={"TABLE_NAME": demo_table.table_name})
 
         # grant permission to lambda to read from demo table
         demo_table.grant_read_data(consumer_lambda)
-
-        # create a Cloudwatch Event rule
-        one_minute_rule = aws_events.Rule(
-            self, "one_minute_rule",
-            schedule=aws_events.Schedule.rate(core.Duration.minutes(1)),
-        )
-
-        # Add target to Cloudwatch Event
-        one_minute_rule.add_target(aws_events_targets.LambdaFunction(producer_lambda))
-        one_minute_rule.add_target(aws_events_targets.LambdaFunction(consumer_lambda))
 
 
 def main():
