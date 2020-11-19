@@ -76,3 +76,24 @@ def producer(event, context):
         'statusCode': 200,
         "body": json.dumps({"insert": payload})
     }
+
+
+def update_status(event, context):
+    table = dynamodb.Table(TABLE_NAME)
+    # get data from payload
+    payload = _decode_payload(event=event)
+
+    response = table.update_item(
+        Key={
+            "id": payload['id']
+        },
+        UpdateExpression="set status=:s",
+        ExpressionAttributeValues={
+            ':s': payload['status']
+        },
+        ReturnValues="UPDATED_NEW"
+    )
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"update": response})
+    }

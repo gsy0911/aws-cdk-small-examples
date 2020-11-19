@@ -50,6 +50,18 @@ class ApigwDynamodbLambdaStack(core.Stack):
         # grant permission to lambda to read from demo table
         demo_table.grant_read_data(consumer_lambda)
 
+        # create consumer lambda function
+        update_lambda = lambda_.Function(
+            scope=self,
+            id="update_lambda_function",
+            runtime=self.LAMBDA_PYTHON_RUNTIME,
+            handler="lambda_handler.update_status",
+            code=lambda_.Code.asset("./lambda_script"),
+            environment={"TABLE_NAME": demo_table.table_name})
+
+        # grant permission to lambda to read from demo table
+        demo_table.grant_write_data(update_lambda)
+
         # api_gateway for root
         base_api = apigw_.RestApi(
             scope=self,
@@ -58,7 +70,7 @@ class ApigwDynamodbLambdaStack(core.Stack):
             deploy_options=apigw_.StageOptions(stage_name=stack_env)
         )
 
-        # add entity
+        # /example entity
         api_entity = base_api.root.add_resource("example")
 
         # consumer
@@ -89,6 +101,23 @@ class ApigwDynamodbLambdaStack(core.Stack):
         api_entity.add_method(
             http_method="POST",
             integration=api_entity_producer_lambda
+        )
+
+        # /example entity
+        api_update_entity = base_api.root.add_resource("example/update")
+        # producer
+        api_entity_update_lambda = apigw_.LambdaIntegration(
+            handler=producer_lambda,
+            integration_responses=[
+                apigw_.IntegrationResponse(
+                    status_code="200"
+                )
+            ]
+        )
+        # for POST
+        api_update_entity.add_method(
+            http_method="POST",
+            integration=api_entity_update_lambda
         )
 
 
