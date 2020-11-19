@@ -4,7 +4,7 @@
 ## generating resources
 
 
-![image](./pics/aws-cdk-small-examples-batch-stepfunction.png)
+![image](./pics/aws-cdk-small-examples-apigw_dynamodb_lambda.png)
 
 * DynamoDB
 * Lambda
