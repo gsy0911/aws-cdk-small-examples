@@ -87,9 +87,12 @@ def update_status(event, context):
         Key={
             "id": payload['id']
         },
-        UpdateExpression="set status=:s",
+        UpdateExpression="set #status = :status",
+        ExpressionAttributeNames={
+            '#status':  'status'
+        },
         ExpressionAttributeValues={
-            ':s': payload['status']
+            ':status': payload['status']
         },
         ReturnValues="UPDATED_NEW"
     )
