@@ -109,8 +109,15 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
             scope=self,
             id="initial_update_dynamodb",
             # get id from StepFunctions state
-            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string("$.id")},
-            table=demo_table
+            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
+            table=demo_table,
+            update_expression="set #status = :status",
+            expression_attribute_names={
+                "#status": "status"
+            },
+            expression_attribute_values={
+                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.status"))
+            }
         )
 
         # `one step` for StepFunctions

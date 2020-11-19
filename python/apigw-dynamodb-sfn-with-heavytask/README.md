@@ -7,3 +7,6 @@
 
 ![image](./pics/)
 
+# References
+
+* [Developers.io](https://dev.classmethod.jp/articles/aws-cdk-stepfunctions-pass-events-to-error-task/)
