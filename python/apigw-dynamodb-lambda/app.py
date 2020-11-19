@@ -103,11 +103,11 @@ class ApigwDynamodbLambdaStack(core.Stack):
             integration=api_entity_producer_lambda
         )
 
-        # /example entity
-        api_update_entity = base_api.root.add_resource("example/update")
+        # /example/update entity
+        api_update_entity = api_entity.add_resource("update")
         # producer
         api_entity_update_lambda = apigw_.LambdaIntegration(
-            handler=producer_lambda,
+            handler=update_lambda,
             integration_responses=[
                 apigw_.IntegrationResponse(
                     status_code="200"
