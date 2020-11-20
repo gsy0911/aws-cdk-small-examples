@@ -19,9 +19,11 @@ class DecimalEncoder(json.JSONEncoder):
 
 # Get the service resource.
 dynamodb = boto3.resource('dynamodb')
+step_functions = boto3.client("stepfunctions")
 
 # set environment variable
-TABLE_NAME = os.environ['TABLE_NAME']
+TABLE_NAME = os.environ.get("TABLE_NAME")
+STEP_FUNCTION_ARN = os.environ.get("STEP_FUNCTION_ARN")
 
 
 def _decode_payload(event: dict) -> dict:
@@ -100,3 +102,14 @@ def update_status(event, context):
         "statusCode": 200,
         "body": json.dumps({"update": response})
     }
+
+
+def invoke_step_function(event, _):
+    # get data from payload
+    payload = _decode_payload(event=event)
+    id_ = payload['id']
+    step_functions.start_execution(
+        stateMachineArn=STEP_FUNCTION_ARN,
+        name=f"process for {id_}",
+        input=json.dumps({})
+    )
