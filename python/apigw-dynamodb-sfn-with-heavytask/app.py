@@ -29,6 +29,27 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
             environment=environment
         )
 
+    def _dynamodb_update_in_sfn(
+            self,
+            table: aws_dynamodb.Table,
+            status: str
+    ):
+        return aws_sfn_tasks.DynamoUpdateItem(
+            scope=self,
+            id=f"dynamodb_status_updated_as_{status}",
+            # get id from StepFunctions state
+            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
+            table=table,
+            update_expression="set #status = :status",
+            expression_attribute_names={
+                "#status": "status"
+            },
+            expression_attribute_values={
+                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string(status)
+            },
+            result_path=f"$.status_{status}"
+        )
+
     def __init__(self, scope: core.App, id_: str, stack_env: str, **kwargs) -> None:
         super().__init__(scope, id_, **kwargs)
 
@@ -103,61 +124,25 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         # StepFunctions #
         # ============= #
 
-        dynamodb_update_running_task = aws_sfn_tasks.DynamoUpdateItem(
-            scope=self,
-            id="update_dynamodb_status",
-            # get id from StepFunctions state
-            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
-            table=demo_table,
-            update_expression="set #status = :status",
-            expression_attribute_names={
-                "#status": "status"
-            },
-            expression_attribute_values={
-                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("running")
-            }
-        )
+        dynamodb_update_running_task = self._dynamodb_update_in_sfn(table=demo_table, status="running")
 
         wait_1_min = aws_sfn.Wait(
             scope=self,
-            id="Wait one minutes",
+            id="Wait one minutes as heavy task",
             time=aws_sfn.WaitTime.duration(core.Duration.minutes(1)),
         )
 
-        dynamodb_update_complete_task = aws_sfn_tasks.DynamoUpdateItem(
-            scope=self,
-            id="complete_dynamodb_status",
-            # get id from StepFunctions state
-            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
-            table=demo_table,
-            update_expression="set #status = :status",
-            expression_attribute_names={
-                "#status": "status"
-            },
-            expression_attribute_values={
-                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("complete")
-            }
-        )
+        dynamodb_update_complete_task = self._dynamodb_update_in_sfn(table=demo_table, status="complete")
+        dynamodb_update_failure_task = self._dynamodb_update_in_sfn(table=demo_table, status="failure")
 
-        dynamodb_update_failure_task = aws_sfn_tasks.DynamoUpdateItem(
-            scope=self,
-            id="failure_dynamodb_status",
-            # get id from StepFunctions state
-            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
-            table=demo_table,
-            update_expression="set #status = :status",
-            expression_attribute_names={
-                "#status": "status"
-            },
-            expression_attribute_values={
-                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("failure")
-            }
-        )
+        check_task_status = aws_sfn.Choice(scope=self, id="Job Complete?")\
+            .when(aws_sfn.Condition.string_equals("$.job_status", "success"), dynamodb_update_complete_task) \
+            .otherwise(dynamodb_update_failure_task)
 
-        # `one step` for StepFunctions
+        # StepFunctions
         definition = dynamodb_update_running_task \
             .next(wait_1_min) \
-            .next(dynamodb_update_complete_task)
+            .next(check_task_status)
 
         sfn_process = aws_sfn.StateMachine(
             scope=self,
