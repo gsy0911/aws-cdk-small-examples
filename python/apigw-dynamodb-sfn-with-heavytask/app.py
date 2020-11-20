@@ -103,9 +103,9 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         # StepFunctions #
         # ============= #
 
-        dynamodb_update_task = aws_sfn_tasks.DynamoUpdateItem(
+        dynamodb_update_running_task = aws_sfn_tasks.DynamoUpdateItem(
             scope=self,
-            id="initial_update_dynamodb",
+            id="update_dynamodb_status",
             # get id from StepFunctions state
             key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
             table=demo_table,
@@ -114,12 +114,50 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
                 "#status": "status"
             },
             expression_attribute_values={
-                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.status"))
+                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("running")
+            }
+        )
+
+        wait_1_min = aws_sfn.Wait(
+            scope=self,
+            id="Wait one minutes",
+            time=aws_sfn.WaitTime.duration(core.Duration.minutes(1)),
+        )
+
+        dynamodb_update_complete_task = aws_sfn_tasks.DynamoUpdateItem(
+            scope=self,
+            id="complete_dynamodb_status",
+            # get id from StepFunctions state
+            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
+            table=demo_table,
+            update_expression="set #status = :status",
+            expression_attribute_names={
+                "#status": "status"
+            },
+            expression_attribute_values={
+                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("complete")
+            }
+        )
+
+        dynamodb_update_failure_task = aws_sfn_tasks.DynamoUpdateItem(
+            scope=self,
+            id="failure_dynamodb_status",
+            # get id from StepFunctions state
+            key={"id": aws_sfn_tasks.DynamoAttributeValue.from_string(aws_sfn.JsonPath.string_at("$.id"))},
+            table=demo_table,
+            update_expression="set #status = :status",
+            expression_attribute_names={
+                "#status": "status"
+            },
+            expression_attribute_values={
+                ":status": aws_sfn_tasks.DynamoAttributeValue.from_string("failure")
             }
         )
 
         # `one step` for StepFunctions
-        definition = dynamodb_update_task
+        definition = dynamodb_update_running_task \
+            .next(wait_1_min) \
+            .next(dynamodb_update_complete_task)
 
         sfn_process = aws_sfn.StateMachine(
             scope=self,
