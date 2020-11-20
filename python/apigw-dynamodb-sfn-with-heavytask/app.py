@@ -15,6 +15,20 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
 
     LAMBDA_PYTHON_RUNTIME = lambda_.Runtime.PYTHON_3_8
 
+    def _create_lambda_function(
+            self,
+            function_name: str,
+            environment: dict
+    ):
+        return lambda_.Function(
+            scope=self,
+            id=f"{function_name}_lambda_function",
+            runtime=self.LAMBDA_PYTHON_RUNTIME,
+            handler=f"lambda_handler.{function_name}",
+            code=lambda_.Code.asset("./lambda_script"),
+            environment=environment
+        )
+
     def __init__(self, scope: core.App, id_: str, stack_env: str, **kwargs) -> None:
         super().__init__(scope, id_, **kwargs)
 
@@ -31,12 +45,8 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         )
 
         # create producer lambda function
-        producer_lambda = lambda_.Function(
-            scope=self,
-            id="producer_lambda_function",
-            runtime=self.LAMBDA_PYTHON_RUNTIME,
-            handler="lambda_handler.producer",
-            code=lambda_.Code.asset("./lambda_script"),
+        producer_lambda = self._create_lambda_function(
+            function_name="producer",
             environment={"TABLE_NAME": demo_table.table_name}
         )
 
@@ -44,13 +54,10 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         demo_table.grant_write_data(producer_lambda)
 
         # create consumer lambda function
-        consumer_lambda = lambda_.Function(
-            scope=self,
-            id="consumer_lambda_function",
-            runtime=self.LAMBDA_PYTHON_RUNTIME,
-            handler="lambda_handler.consumer",
-            code=lambda_.Code.asset("./lambda_script"),
-            environment={"TABLE_NAME": demo_table.table_name})
+        consumer_lambda = self._create_lambda_function(
+            function_name="consumer",
+            environment={"TABLE_NAME": demo_table.table_name}
+        )
 
         # grant permission to lambda to read from demo table
         demo_table.grant_read_data(consumer_lambda)
@@ -66,44 +73,35 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         # /example entity
         api_entity = base_api.root.add_resource("example")
 
-        # consumer
-        api_entity_consumer_lambda = apigw_.LambdaIntegration(
-            handler=consumer_lambda,
-            integration_responses=[
-                apigw_.IntegrationResponse(
-                    status_code="200"
-                )
-            ]
-        )
-        # for GET
+        # GET /example
         api_entity.add_method(
             http_method="GET",
-            integration=api_entity_consumer_lambda
+            integration=apigw_.LambdaIntegration(
+                handler=consumer_lambda,
+                integration_responses=[
+                    apigw_.IntegrationResponse(
+                        status_code="200"
+                    )
+                ]
+            )
         )
 
-        # producer
-        api_entity_producer_lambda = apigw_.LambdaIntegration(
-            handler=producer_lambda,
-            integration_responses=[
-                apigw_.IntegrationResponse(
-                    status_code="200"
-                )
-            ]
-        )
-        # for POST
+        # POST /example
         api_entity.add_method(
             http_method="POST",
-            integration=api_entity_producer_lambda
+            integration=apigw_.LambdaIntegration(
+                handler=producer_lambda,
+                integration_responses=[
+                    apigw_.IntegrationResponse(
+                        status_code="200"
+                    )
+                ]
+            )
         )
 
         # ============= #
         # StepFunctions #
         # ============= #
-        # Ref::{keyword} can be replaced with StepFunction input
-        command_overrides = [
-            "python", "__init__.py",
-            "--time", "Ref::time"
-        ]
 
         dynamodb_update_task = aws_sfn_tasks.DynamoUpdateItem(
             scope=self,
@@ -123,10 +121,16 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         # `one step` for StepFunctions
         definition = dynamodb_update_task
 
-        sfn_daily_process = aws_sfn.StateMachine(
+        sfn_process = aws_sfn.StateMachine(
             scope=self,
             id=f"YourProjectSFn-{stack_env}",
             definition=definition
+        )
+
+        # Lambda to invoke StepFunction
+        self._create_lambda_function(
+            function_name="invoke_step_function",
+            environment={"STEP_FUNCTION_ARN": sfn_process.state_machine_arn}
         )
 
 
