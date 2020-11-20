@@ -110,6 +110,6 @@ def invoke_step_function(event, _):
     id_ = payload['id']
     step_functions.start_execution(
         stateMachineArn=STEP_FUNCTION_ARN,
-        name=f"process for {id_}",
-        input=json.dumps({})
+        name=f"process_for_{id_}",
+        input=json.dumps(payload)
     )

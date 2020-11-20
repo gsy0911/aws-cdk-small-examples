@@ -123,15 +123,17 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
 
         sfn_process = aws_sfn.StateMachine(
             scope=self,
-            id=f"YourProjectSFn-{stack_env}",
+            id=f"{id_}-{stack_env}",
             definition=definition
         )
 
         # Lambda to invoke StepFunction
-        self._create_lambda_function(
+        sfn_invoke_lambda = self._create_lambda_function(
             function_name="invoke_step_function",
             environment={"STEP_FUNCTION_ARN": sfn_process.state_machine_arn}
         )
+
+        sfn_process.grant_start_execution(sfn_invoke_lambda)
 
 
 def main():
