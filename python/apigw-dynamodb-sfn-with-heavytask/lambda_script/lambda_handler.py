@@ -20,10 +20,12 @@ class DecimalEncoder(json.JSONEncoder):
 # Get the service resource.
 dynamodb = boto3.resource('dynamodb')
 step_functions = boto3.client("stepfunctions")
+sqs = boto3.client("sqs")
 
 # set environment variable
 TABLE_NAME = os.environ.get("TABLE_NAME")
 STEP_FUNCTION_ARN = os.environ.get("STEP_FUNCTION_ARN")
+QUEUE_URL = os.environ.get("QUEUE_URL")
 
 
 def _decode_payload(event: dict) -> dict:
@@ -63,11 +65,19 @@ def producer(event, context):
     table = dynamodb.Table(TABLE_NAME)
     # get data from payload
     payload = _decode_payload(event=event)
-    payload.update({"id": str(uuid.uuid4())})
+    id_ = str(uuid.uuid4())
+    payload.update({"id": id_})
+
+    # en-queue
+    sqs.send_message(
+        QueueUrl=QUEUE_URL,
+        MessageBody=id_
+    )
 
     # put item in table
     response = table.put_item(
         Item=payload
+
     )
 
     print(f"item to insert: {payload}")
@@ -106,6 +116,14 @@ def update_status(event, context):
 
 def invoke_step_function(event, _):
     # get data from payload
+    message = sqs.receive_message(
+        QueueUrl=QUEUE_URL,
+        MaxNumberOfMessages=1,
+        VisibilityTimeout=30
+    )
+
+    print(message)
+
     payload = _decode_payload(event=event)
     id_ = payload['id']
     step_functions.start_execution(
