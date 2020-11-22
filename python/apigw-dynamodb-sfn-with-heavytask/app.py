@@ -7,7 +7,7 @@ from aws_cdk import (
     aws_stepfunctions_tasks as aws_sfn_tasks,
     aws_events,
     aws_events_targets,
-
+    aws_sqs
 )
 
 
@@ -65,11 +65,17 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
             read_capacity=3
         )
 
+        queue = aws_sqs.Queue(self, f"{id_}-SQSQueue")
+
         # create producer lambda function
         producer_lambda = self._create_lambda_function(
             function_name="producer",
-            environment={"TABLE_NAME": demo_table.table_name}
+            environment={
+                "TABLE_NAME": demo_table.table_name,
+                "QUEUE_URL": queue.queue_url
+            }
         )
+        queue.grant_send_messages(producer_lambda)
 
         # grant permission to lambda to write to demo table
         demo_table.grant_write_data(producer_lambda)
@@ -152,11 +158,28 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
 
         # Lambda to invoke StepFunction
         sfn_invoke_lambda = self._create_lambda_function(
-            function_name="invoke_step_function",
-            environment={"STEP_FUNCTION_ARN": sfn_process.state_machine_arn}
+            function_name=f"{id_}-invoke_step_function",
+            environment={
+                "STEP_FUNCTION_ARN": sfn_process.state_machine_arn,
+                "QUEUE_URL": queue.queue_url
+            }
         )
-
+        # grant
+        queue.grant_consume_messages(sfn_invoke_lambda)
         sfn_process.grant_start_execution(sfn_invoke_lambda)
+
+        # ================ #
+        # CloudWatch Event #
+        # ================ #
+
+        # # Runs every 2 hour
+        # invoke_automatically = aws_events.Rule(
+        #     scope=self,
+        #     id=f"{id_}-InvokeSFnViaLambda-{stack_env}",
+        #     schedule=aws_events.Schedule.rate(core.Duration.hours(2))
+        # )
+        # invoke_automatically.add_target(aws_events_targets.LambdaFunction(sfn_invoke_lambda))
+        # sfn_invoke_lambda.grant_invoke(invoke_automatically)
 
 
 def main():
