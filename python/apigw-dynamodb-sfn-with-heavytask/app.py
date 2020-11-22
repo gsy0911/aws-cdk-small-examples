@@ -172,14 +172,14 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
         # CloudWatch Event #
         # ================ #
 
-        # # Runs every 2 hour
-        # invoke_automatically = aws_events.Rule(
-        #     scope=self,
-        #     id=f"{id_}-InvokeSFnViaLambda-{stack_env}",
-        #     schedule=aws_events.Schedule.rate(core.Duration.hours(2))
-        # )
-        # invoke_automatically.add_target(aws_events_targets.LambdaFunction(sfn_invoke_lambda))
-        # sfn_invoke_lambda.grant_invoke(invoke_automatically)
+        # Runs every 2 hour
+        invoke_automatically = aws_events.Rule(
+            scope=self,
+            id=f"InvokeSFnViaLambda-{stack_env}",
+            schedule=aws_events.Schedule.rate(core.Duration.hours(2))
+        )
+        invoke_automatically.add_target(aws_events_targets.LambdaFunction(sfn_invoke_lambda))
+        sfn_invoke_lambda.grant_invoke(invoke_automatically)
 
 
 def main():
