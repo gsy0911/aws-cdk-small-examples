@@ -1,7 +1,10 @@
-import json
-import uuid
+from datetime import datetime
 import decimal
+import json
 import os
+import random
+import uuid
+
 import boto3
 from botocore.exceptions import ClientError
 
@@ -101,7 +104,7 @@ def update_status(event, context):
         },
         UpdateExpression="set #status = :status",
         ExpressionAttributeNames={
-            '#status':  'status'
+            '#status': 'status'
         },
         ExpressionAttributeValues={
             ':status': payload['status']
@@ -115,19 +118,54 @@ def update_status(event, context):
 
 
 def invoke_step_function(event, _):
-    # get data from payload
+    """
+    queue message is received as
+    {
+        "Messages": [
+            {
+                "MessageId": "...",
+                "ReceiptHandle": "...",
+                "MD5OfBody": "...",
+                "Body": "..."
+            }
+        ],
+        "ResponseMetadata": {
+            "RequestId": "...",
+            "HttpStatusCode": 200,
+            "HTTPHeaders": {
+                "x-amzn-requestid": "...",
+                "data": "Sun, 22 Nov 2020 02:15:28 GMT",
+                "content-type": "text/xml",
+                "content-length": 123
+            },
+            "RetryAttempts": 0
+        }
+    }
+    """
+    # get data from queue
     message = sqs.receive_message(
         QueueUrl=QUEUE_URL,
         MaxNumberOfMessages=1,
         VisibilityTimeout=30
     )
-
     print(message)
+    if "Messages" in message:
+        queue_message = message['Messages'][0]
+        id_ = queue_message['Body']
+        step_functions.start_execution(
+            stateMachineArn=STEP_FUNCTION_ARN,
+            name=f"process_for_{id_}_{datetime.now().strftime('%Y%m%dT%H%M%S')}",
+            input=json.dumps({
+                "id": id_,
+                # to choice `success` or `failure` in SFn
+                "job_status": "success" if random.randint(1, 10) < 5 else "fail"
+            })
+        )
 
-    payload = _decode_payload(event=event)
-    id_ = payload['id']
-    step_functions.start_execution(
-        stateMachineArn=STEP_FUNCTION_ARN,
-        name=f"process_for_{id_}",
-        input=json.dumps(payload)
-    )
+        # delete message
+        _ = sqs.delete_message(
+            QueueUrl=QUEUE_URL,
+            ReceiptHandle=queue_message['ReceiptHandle']
+        )
+    else:
+        pass
