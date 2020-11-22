@@ -158,7 +158,7 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
 
         # Lambda to invoke StepFunction
         sfn_invoke_lambda = self._create_lambda_function(
-            function_name=f"{id_}-invoke_step_function",
+            function_name="invoke_step_function",
             environment={
                 "STEP_FUNCTION_ARN": sfn_process.state_machine_arn,
                 "QUEUE_URL": queue.queue_url
