@@ -32,6 +32,7 @@ def main(time: str, s3_bucket: str):
     # ここでは、CloudWatch Logsに実行日時を書き込むのみ
     logger.info(f"{execute_date=}")
 
+
 if __name__ == "__main__":
     """
     python __init__.py 
