@@ -2,7 +2,7 @@ from aws_cdk import (
     core,
     aws_ec2,
     aws_batch,
-    aws_ecr,
+    aws_ecr_assets,
     aws_ecs,
     aws_iam,
     aws_stepfunctions as aws_sfn,
@@ -11,10 +11,7 @@ from aws_cdk import (
     aws_events_targets,
 )
 
-ACCOUNT_NUMBER = ""
-REGION = ""
-ECR_REPOSITORY_NAME = ""
-PROJECT_NAME = ""
+S3_BUCKET = ""
 
 
 class BatchEnvironment(core.Stack):
@@ -26,9 +23,6 @@ class BatchEnvironment(core.Stack):
     * CloudWatch Event
 
     """
-    # ECR-arn
-    ECR_REPOSITORY_ARN = f"arn:aws:ecr:{REGION}:{ACCOUNT_NUMBER}:repository/{ECR_REPOSITORY_NAME}"
-
     def __init__(self, app: core.App, stack_name: str, stack_env: str):
         super().__init__(scope=app, id=f"{stack_name}-{stack_env}")
 
@@ -206,15 +200,16 @@ class BatchEnvironment(core.Stack):
         )
 
         # ECR repository
-        ecr_repository = aws_ecr.Repository.from_repository_arn(
+        ecr_repository = aws_ecr_assets.DockerImageAsset(
             scope=self,
-            id=f"image_for_{stack_name}-{stack_env}",
-            repository_arn=self.ECR_REPOSITORY_ARN
+            id=f"ecr_image_{stack_env}",
+            directory="./docker",
+            repository_name=f"repository_for_{stack_env}"
         )
 
         # get image from ECR
         container_image = aws_ecs.ContainerImage.from_ecr_repository(
-            repository=ecr_repository
+            repository=ecr_repository.repository
         )
 
         # job define
@@ -226,7 +221,7 @@ class BatchEnvironment(core.Stack):
             container=aws_batch.JobDefinitionContainer(
                 image=container_image,
                 environment={
-                    "S3_BUCKET": f"{YOUR_S3_BUCKET}"
+                    "S3_BUCKET": f"{S3_BUCKET}"
                 },
                 job_role=job_role,
                 vcpus=1,
@@ -289,8 +284,6 @@ class BatchEnvironment(core.Stack):
 
 def main():
     app = core.App()
-    BatchEnvironment(app, "your-project", "feature")
-    BatchEnvironment(app, "your-project", "dev")
     BatchEnvironment(app, "your-project", "prod")
     app.synth()
 
