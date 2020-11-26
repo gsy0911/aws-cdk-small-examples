@@ -1,7 +1,8 @@
 from aws_cdk import (
     core,
     aws_lambda as lambda_,
-    aws_apigateway as apigw_
+    aws_apigateway as apigw_,
+    aws_iam as iam
 )
 
 
@@ -26,12 +27,31 @@ class ApigwLambdaStack(core.Stack):
             memory_size=128
         )
 
+        # resource policy
+        whitelisted_ips = [
+            "127.0.0./32"
+        ]
+        api_resource_policy = iam.PolicyDocument(
+            statements=[
+                iam.PolicyStatement(
+                    effect=iam.Effect.ALLOW,
+                    actions=["execute-api:Invoke"],
+                    principals=[iam.AnyPrincipal()],
+                    resources=["execute-api:/*/*/*"],
+                    conditions={
+                        "IpAddress": {"aws:SourceIp": whitelisted_ips}
+                    }
+                )
+            ]
+        )
+
         # api_gateway
         base_api = apigw_.RestApi(
             scope=self,
             id=f"{cfn_name}-{stack_env}-apigw",
             rest_api_name=f"{cfn_name}-{stack_env}-apigw",
-            deploy_options=apigw_.StageOptions(stage_name=stack_env)
+            deploy_options=apigw_.StageOptions(stage_name=stack_env),
+            policy=api_resource_policy
         )
 
         api_entity = base_api.root.add_resource("task")

@@ -32,3 +32,7 @@ $ curl -X POST -H "Content-Type:application/json" -d '{"time": "2020-11-01T12:00
     "dt": "2020-11-01"
 }
 ```
+
+## reference
+
+* [add resource policy](https://medium.com/@martinkuzdowicz/aws-cdk-template-for-api-gateway-with-resource-policy-dc17a487718)
