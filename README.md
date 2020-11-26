@@ -46,6 +46,7 @@ $ cdk destroy {target_name}
 | [glue-stepfunctions](./python/glue-stepfunctions)  | Creating a Glue Job, and execute on StepFunctions. |
 | [lambda-stepfunctions](./python/lambda-stepfunctions)  | Creating a multiple Lambda with package, and invoke StepFunctions. |
 | [lambda-creating-lambda_layers](./python/lambda-creating-lambda_layers)  | Creating a Lambda which puts a zip file for LambdaLayers in S3. |
+| [waf-alb-ec2-glue-athena-s3](./python/waf-alb-ec2-glue-athena-s3)  | Creating resources to analyze DoS-attack detected by WAF. |
 | [select-existing-resources]()  | Select existing resource, VPC, Lambda, etc. |
 
 
@@ -60,12 +61,11 @@ $ cdk destroy {target_name}
 * StepFunctions(lambda, SQS, SNS)
 * Athena (=Glue Crawler)
 * DynamoDB
-* AWS Batch (ECR + CodeBuild + CodePipeline?)
 * EKS
 * Kinesis
 * API Gateway (+ custom domain)
 * CloudFront (+ custom domain)
-* Beanstalk ?
+* Beanstalk
 
 # References
 
