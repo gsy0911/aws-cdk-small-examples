@@ -13,8 +13,8 @@ class LoadBalancerStack(core.Stack):
         vpc = ec2.Vpc(self, "VPC")
 
         data = open("./httpd.sh", "rb").read()
-        httpd=ec2.UserData.for_linux()
-        httpd.add_commands(str(data,'utf-8'))
+        httpd = ec2.UserData.for_linux()
+        httpd.add_commands(str(data, 'utf-8'))
 
         asg = autoscaling.AutoScalingGroup(
             self,
@@ -37,9 +37,14 @@ class LoadBalancerStack(core.Stack):
         listener.connections.allow_default_port_from_any_ipv4("Open to the world")
 
         asg.scale_on_request_count("AModestLoad", target_requests_per_second=1)
-        core.CfnOutput(self,"LoadBalancer",export_name="LoadBalancer",value=lb.load_balancer_dns_name)
+        core.CfnOutput(self, "LoadBalancer", export_name="LoadBalancer", value=lb.load_balancer_dns_name)
 
 
-app = core.App()
-LoadBalancerStack(app, "LoadBalancerStack")
-app.synth()
+def main():
+    app = core.App()
+    LoadBalancerStack(app, "LoadBalancerStack")
+    app.synth()
+
+
+if __name__ == "__main__":
+    main()
