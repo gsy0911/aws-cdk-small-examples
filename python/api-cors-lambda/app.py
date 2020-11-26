@@ -34,8 +34,8 @@ class ApiCorsLambdaStack(core.Stack):
                         'method.response.header.Access-Control-Allow-Origin': "'*'"
                     }
                 )
-        ]
-                                                                     )
+            ]
+        )
         example_entity.add_method(
             http_method='GET',
             integration=example_entity_lambda_integration,
@@ -80,8 +80,8 @@ class ApiCorsLambdaStack(core.Stack):
                         'method.response.header.Access-Control-Allow-Origin': True,
                     }
                 )
-                ]
-            )
+            ]
+        )
 
 
 def main():
