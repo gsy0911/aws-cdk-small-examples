@@ -1,32 +1,32 @@
 [[package]]
-category = "dev"
-description = "A configurable sidebar-enabled Sphinx theme"
 name = "alabaster"
+version = "0.7.12"
+description = "A configurable sidebar-enabled Sphinx theme"
+category = "dev"
 optional = false
 python-versions = "*"
-version = "0.7.12"
 
 [[package]]
-category = "main"
-description = "Classes Without Boilerplate"
 name = "attrs"
+version = "20.3.0"
+description = "Classes Without Boilerplate"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "20.3.0"
 
 [package.extras]
-dev = ["coverage (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "furo", "sphinx", "pre-commit"]
+dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "furo", "sphinx", "pre-commit"]
 docs = ["furo", "sphinx", "zope.interface"]
-tests = ["coverage (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
-tests_no_zope = ["coverage (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six"]
+tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
+tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six"]
 
 [[package]]
-category = "main"
-description = "Event targets for Amazon EventBridge"
 name = "aws-cdk-aws-events-targets"
+version = "1.75.0"
+description = "Event targets for Amazon EventBridge"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-batch" = "1.75.0"
@@ -51,12 +51,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Lambda"
 name = "aws-cdk-aws-lambda"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Lambda"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-applicationautoscaling" = "1.75.0"
@@ -77,12 +77,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::StepFunctions"
 name = "aws-cdk-aws-stepfunctions"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::StepFunctions"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudwatch" = "1.75.0"
@@ -95,12 +95,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Task integrations for AWS StepFunctions"
 name = "aws-cdk-aws-stepfunctions-tasks"
+version = "1.75.0"
+description = "Task integrations for AWS StepFunctions"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -126,12 +126,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "AWS Cloud Development Kit Core Library"
 name = "aws-cdk-core"
+version = "1.75.0"
+description = "AWS Cloud Development Kit Core Library"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.cloud-assembly-schema" = "1.75.0"
@@ -142,12 +142,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "This module is deprecated. All types are now available under the core module"
 name = "aws-cdk.assets"
+version = "1.75.0"
+description = "This module is deprecated. All types are now available under the core module"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -157,12 +157,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ApiGateway"
 name = "aws-cdk.aws-apigateway"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ApiGateway"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -182,12 +182,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::APIGatewayv2"
 name = "aws-cdk.aws-apigatewayv2"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::APIGatewayv2"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-certificatemanager" = "1.75.0"
@@ -200,12 +200,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ApplicationAutoScaling"
 name = "aws-cdk.aws-applicationautoscaling"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ApplicationAutoScaling"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-autoscaling-common" = "1.75.0"
@@ -217,12 +217,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Athena"
 name = "aws-cdk.aws-athena"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Athena"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -231,12 +231,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::AutoScaling"
 name = "aws-cdk.aws-autoscaling"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::AutoScaling"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-autoscaling-common" = "1.75.0"
@@ -252,12 +252,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Common implementation package for @aws-cdk/aws-autoscaling and @aws-cdk/aws-applicationautoscaling"
 name = "aws-cdk.aws-autoscaling-common"
+version = "1.75.0"
+description = "Common implementation package for @aws-cdk/aws-autoscaling and @aws-cdk/aws-applicationautoscaling"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -267,12 +267,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Lifecycle hook for AWS AutoScaling"
 name = "aws-cdk.aws-autoscaling-hooktargets"
+version = "1.75.0"
+description = "Lifecycle hook for AWS AutoScaling"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-autoscaling" = "1.75.0"
@@ -288,12 +288,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Batch"
 name = "aws-cdk.aws-batch"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Batch"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -306,12 +306,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CertificateManager"
 name = "aws-cdk.aws-certificatemanager"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CertificateManager"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -323,12 +323,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CloudFormation"
 name = "aws-cdk.aws-cloudformation"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CloudFormation"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -342,12 +342,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CloudFront"
 name = "aws-cdk.aws-cloudfront"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CloudFront"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-certificatemanager" = "1.75.0"
@@ -361,12 +361,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS CloudFront Origins"
 name = "aws-cdk.aws-cloudfront-origins"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS CloudFront Origins"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudfront" = "1.75.0"
@@ -378,12 +378,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CloudWatch"
 name = "aws-cdk.aws-cloudwatch"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CloudWatch"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -393,12 +393,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CodeBuild"
 name = "aws-cdk.aws-codebuild"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CodeBuild"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -421,12 +421,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CodeCommit"
 name = "aws-cdk.aws-codecommit"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CodeCommit"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-events" = "1.75.0"
@@ -437,12 +437,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::CodeGuruProfiler"
 name = "aws-cdk.aws-codeguruprofiler"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::CodeGuruProfiler"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -452,12 +452,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Better interface to AWS Code Pipeline"
 name = "aws-cdk.aws-codepipeline"
+version = "1.75.0"
+description = "Better interface to AWS Code Pipeline"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-events" = "1.75.0"
@@ -470,12 +470,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Cognito"
 name = "aws-cdk.aws-cognito"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Cognito"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-certificatemanager" = "1.75.0"
@@ -488,12 +488,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::DynamoDB"
 name = "aws-cdk.aws-dynamodb"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::DynamoDB"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-applicationautoscaling" = "1.75.0"
@@ -508,12 +508,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::EC2"
 name = "aws-cdk.aws-ec2"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::EC2"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -533,12 +533,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ECR"
 name = "aws-cdk.aws-ecr"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ECR"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-events" = "1.75.0"
@@ -549,12 +549,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Docker image assets deployed to ECR"
 name = "aws-cdk.aws-ecr-assets"
+version = "1.75.0"
+description = "Docker image assets deployed to ECR"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -568,12 +568,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ECS"
 name = "aws-cdk.aws-ecs"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ECS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -607,12 +607,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::EFS"
 name = "aws-cdk.aws-efs"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::EFS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -625,12 +625,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ElasticLoadBalancing"
 name = "aws-cdk.aws-elasticloadbalancing"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ElasticLoadBalancing"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -640,12 +640,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ElasticLoadBalancingV2"
 name = "aws-cdk.aws-elasticloadbalancingv2"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ElasticLoadBalancingV2"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-certificatemanager" = "1.75.0"
@@ -663,12 +663,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Amazon EventBridge Construct Library"
 name = "aws-cdk.aws-events"
+version = "1.75.0"
+description = "Amazon EventBridge Construct Library"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -678,12 +678,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Glue"
 name = "aws-cdk.aws-glue"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Glue"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -695,12 +695,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "CDK routines for easily assigning correct and minimal IAM permissions"
 name = "aws-cdk.aws-iam"
+version = "1.75.0"
+description = "CDK routines for easily assigning correct and minimal IAM permissions"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -710,12 +710,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Kinesis"
 name = "aws-cdk.aws-kinesis"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Kinesis"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -727,12 +727,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::KinesisFirehose"
 name = "aws-cdk.aws-kinesisfirehose"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::KinesisFirehose"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -741,12 +741,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::KMS"
 name = "aws-cdk.aws-kms"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::KMS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -756,12 +756,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Lambda"
 name = "aws-cdk.aws-lambda"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Lambda"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-applicationautoscaling" = "1.75.0"
@@ -782,12 +782,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Logs"
 name = "aws-cdk.aws-logs"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Logs"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudwatch" = "1.75.0"
@@ -800,12 +800,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::Route53"
 name = "aws-cdk.aws-route53"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::Route53"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -817,12 +817,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS Route53 Alias Targets"
 name = "aws-cdk.aws-route53-targets"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS Route53 Alias Targets"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-apigateway" = "1.75.0"
@@ -842,12 +842,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::S3"
 name = "aws-cdk.aws-s3"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::S3"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-events" = "1.75.0"
@@ -859,12 +859,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Deploy local files and directories to S3"
 name = "aws-cdk.aws-s3-assets"
+version = "1.75.0"
+description = "Deploy local files and directories to S3"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.assets" = "1.75.0"
@@ -878,12 +878,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Constructs for deploying contents to S3 buckets"
 name = "aws-cdk.aws-s3-deployment"
+version = "1.75.0"
+description = "Constructs for deploying contents to S3 buckets"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudfront" = "1.75.0"
@@ -897,12 +897,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for the AWS Serverless Application Model (SAM) resources"
 name = "aws-cdk.aws-sam"
+version = "1.75.0"
+description = "The CDK Construct Library for the AWS Serverless Application Model (SAM) resources"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -911,12 +911,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::SecretsManager"
 name = "aws-cdk.aws-secretsmanager"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::SecretsManager"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -930,12 +930,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::ServiceDiscovery"
 name = "aws-cdk.aws-servicediscovery"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::ServiceDiscovery"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-ec2" = "1.75.0"
@@ -947,12 +947,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::SNS"
 name = "aws-cdk.aws-sns"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::SNS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudwatch" = "1.75.0"
@@ -966,12 +966,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "CDK Subscription Constructs for AWS SNS"
 name = "aws-cdk.aws-sns-subscriptions"
+version = "1.75.0"
+description = "CDK Subscription Constructs for AWS SNS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -984,12 +984,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::SQS"
 name = "aws-cdk.aws-sqs"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::SQS"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudwatch" = "1.75.0"
@@ -1001,12 +1001,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::SSM"
 name = "aws-cdk.aws-ssm"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::SSM"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-iam" = "1.75.0"
@@ -1018,12 +1018,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "The CDK Construct Library for AWS::StepFunctions"
 name = "aws-cdk.aws-stepfunctions"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::StepFunctions"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudwatch" = "1.75.0"
@@ -1036,12 +1036,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
+name = "aws-cdk.aws-wafv2"
+version = "1.75.0"
+description = "The CDK Construct Library for AWS::WAFv2"
 category = "main"
-description = "The CDK Construct Library for AWS::WAF"
-name = "aws-cdk.aws-waf"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.core" = "1.75.0"
@@ -1050,24 +1050,24 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Cloud Assembly Schema"
 name = "aws-cdk.cloud-assembly-schema"
+version = "1.75.0"
+description = "Cloud Assembly Schema"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "AWS Cloud Development Kit Core Library"
 name = "aws-cdk.core"
+version = "1.75.0"
+description = "AWS Cloud Development Kit Core Library"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.cloud-assembly-schema" = "1.75.0"
@@ -1078,12 +1078,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Constructs for implementing CDK custom resources"
 name = "aws-cdk.custom-resources"
+version = "1.75.0"
+description = "Constructs for implementing CDK custom resources"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.aws-cloudformation" = "1.75.0"
@@ -1097,12 +1097,12 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "Cloud executable protocol"
 name = "aws-cdk.cx-api"
+version = "1.75.0"
+description = "Cloud executable protocol"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 "aws-cdk.cloud-assembly-schema" = "1.75.0"
@@ -1110,35 +1110,35 @@ jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "main"
-description = "AWS region information, such as service principal names"
 name = "aws-cdk.region-info"
+version = "1.75.0"
+description = "AWS region information, such as service principal names"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "1.75.0"
 
 [package.dependencies]
 jsii = ">=1.14.1,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "dev"
-description = "Internationalization utilities"
 name = "babel"
+version = "2.9.0"
+description = "Internationalization utilities"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "2.9.0"
 
 [package.dependencies]
 pytz = ">=2015.7"
 
 [[package]]
-category = "main"
-description = "The AWS SDK for Python"
 name = "boto3"
+version = "1.16.25"
+description = "The AWS SDK for Python"
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.16.25"
 
 [package.dependencies]
 botocore = ">=1.19.25,<1.20.0"
@@ -1146,29 +1146,25 @@ jmespath = ">=0.7.1,<1.0.0"
 s3transfer = ">=0.3.0,<0.4.0"
 
 [[package]]
-category = "main"
-description = "Low-level, data-driven core of boto 3."
 name = "botocore"
+version = "1.19.25"
+description = "Low-level, data-driven core of boto 3."
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.19.25"
 
 [package.dependencies]
 jmespath = ">=0.7.1,<1.0.0"
 python-dateutil = ">=2.1,<3.0.0"
-
-[package.dependencies.urllib3]
-python = "<3.4.0 || >=3.5.0"
-version = ">=1.25.4,<1.27"
+urllib3 = {version = ">=1.25.4,<1.27", markers = "python_version != \"3.4\""}
 
 [[package]]
-category = "main"
-description = "Composable complex class support for attrs."
-marker = "python_version >= \"3.7\""
 name = "cattrs"
+version = "1.1.1"
+description = "Composable complex class support for attrs."
+category = "main"
 optional = false
 python-versions = "~=3.7"
-version = "1.1.1"
 
 [package.dependencies]
 attrs = ">=20.1.0"
@@ -1177,73 +1173,72 @@ attrs = ">=20.1.0"
 dev = ["bumpversion", "wheel", "watchdog", "flake8", "tox", "coverage", "sphinx", "pytest", "hypothesis", "pendulum", "isort", "black"]
 
 [[package]]
-category = "dev"
-description = "Python package for providing Mozilla's CA Bundle."
 name = "certifi"
-optional = false
-python-versions = "*"
 version = "2020.11.8"
-
-[[package]]
+description = "Python package for providing Mozilla's CA Bundle."
 category = "dev"
-description = "Universal encoding detector for Python 2 and 3"
-name = "chardet"
 optional = false
 python-versions = "*"
-version = "3.0.4"
 
 [[package]]
+name = "chardet"
+version = "3.0.4"
+description = "Universal encoding detector for Python 2 and 3"
 category = "dev"
-description = "Cross-platform colored terminal text."
-marker = "sys_platform == \"win32\""
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "colorama"
+version = "0.4.4"
+description = "Cross-platform colored terminal text."
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "0.4.4"
 
 [[package]]
-category = "main"
-description = "A programming model for composable configuration"
 name = "constructs"
+version = "3.2.44"
+description = "A programming model for composable configuration"
+category = "main"
 optional = false
 python-versions = ">=3.6"
-version = "3.2.44"
 
 [package.dependencies]
 jsii = ">=1.15.0,<2.0.0"
 publication = ">=0.0.3"
 
 [[package]]
-category = "dev"
-description = "Docutils -- Python Documentation Utilities"
 name = "docutils"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.16"
-
-[[package]]
+description = "Docutils -- Python Documentation Utilities"
 category = "dev"
-description = "Internationalized Domain Names in Applications (IDNA)"
-name = "idna"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "2.10"
-
-[[package]]
-category = "dev"
-description = "Getting image size from png/jpeg/jpeg2000/gif file"
-name = "imagesize"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "1.2.0"
-
-[[package]]
-category = "dev"
-description = "A very fast and expressive template engine."
-name = "jinja2"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
+name = "idna"
+version = "2.10"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "imagesize"
+version = "1.2.0"
+description = "Getting image size from png/jpeg/jpeg2000/gif file"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "jinja2"
 version = "2.11.2"
+description = "A very fast and expressive template engine."
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
 MarkupSafe = ">=0.23"
@@ -1252,100 +1247,97 @@ MarkupSafe = ">=0.23"
 i18n = ["Babel (>=0.8)"]
 
 [[package]]
-category = "main"
-description = "JSON Matching Expressions"
 name = "jmespath"
+version = "0.10.0"
+description = "JSON Matching Expressions"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "0.10.0"
 
 [[package]]
-category = "main"
-description = "Python client for jsii runtime"
 name = "jsii"
+version = "1.15.0"
+description = "Python client for jsii runtime"
+category = "main"
 optional = false
 python-versions = "~=3.6"
-version = "1.15.0"
 
 [package.dependencies]
 attrs = ">=20.1,<21.0"
+cattrs = {version = ">=1.1.0,<1.2.0", markers = "python_version >= \"3.7\""}
 python-dateutil = "*"
 typing-extensions = ">=3.7,<4.0"
 
-[package.dependencies.cattrs]
-python = ">=3.7"
-version = ">=1.1.0,<1.2.0"
-
 [[package]]
-category = "dev"
-description = "Safely add untrusted strings to HTML/XML markup."
 name = "markupsafe"
+version = "1.1.1"
+description = "Safely add untrusted strings to HTML/XML markup."
+category = "dev"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*"
-version = "1.1.1"
 
 [[package]]
-category = "dev"
-description = "Core utilities for Python packages"
 name = "packaging"
+version = "20.4"
+description = "Core utilities for Python packages"
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "20.4"
 
 [package.dependencies]
 pyparsing = ">=2.0.2"
 six = "*"
 
 [[package]]
-category = "main"
-description = "Publication helps you maintain public-api-friendly modules by preventing unintentional access to private implementation details via introspection."
 name = "publication"
+version = "0.0.3"
+description = "Publication helps you maintain public-api-friendly modules by preventing unintentional access to private implementation details via introspection."
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.0.3"
 
 [[package]]
-category = "dev"
-description = "Pygments is a syntax highlighting package written in Python."
 name = "pygments"
+version = "2.7.2"
+description = "Pygments is a syntax highlighting package written in Python."
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "2.7.2"
 
 [[package]]
-category = "dev"
-description = "Python parsing module"
 name = "pyparsing"
+version = "2.4.7"
+description = "Python parsing module"
+category = "dev"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "2.4.7"
 
 [[package]]
-category = "main"
-description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
+version = "2.8.1"
+description = "Extensions to the standard Python datetime module"
+category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
-version = "2.8.1"
 
 [package.dependencies]
 six = ">=1.5"
 
 [[package]]
-category = "dev"
-description = "World timezone definitions, modern and historical"
 name = "pytz"
+version = "2020.4"
+description = "World timezone definitions, modern and historical"
+category = "dev"
 optional = false
 python-versions = "*"
-version = "2020.4"
 
 [[package]]
-category = "dev"
-description = "Python HTTP for Humans."
 name = "requests"
+version = "2.25.0"
+description = "Python HTTP for Humans."
+category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "2.25.0"
 
 [package.dependencies]
 certifi = ">=2017.4.17"
@@ -1355,54 +1347,53 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
-socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7)", "win-inet-pton"]
+socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
-category = "main"
-description = "An Amazon S3 Transfer Manager"
 name = "s3transfer"
+version = "0.3.3"
+description = "An Amazon S3 Transfer Manager"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.3.3"
 
 [package.dependencies]
 botocore = ">=1.12.36,<2.0a.0"
 
 [[package]]
-category = "main"
-description = "Python 2 and 3 compatibility utilities"
 name = "six"
+version = "1.15.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "1.15.0"
 
 [[package]]
-category = "dev"
-description = "This package provides 26 stemmers for 25 languages generated from Snowball algorithms."
 name = "snowballstemmer"
+version = "2.0.0"
+description = "This package provides 26 stemmers for 25 languages generated from Snowball algorithms."
+category = "dev"
 optional = false
 python-versions = "*"
-version = "2.0.0"
 
 [[package]]
-category = "dev"
-description = "Python documentation generator"
 name = "sphinx"
+version = "3.3.1"
+description = "Python documentation generator"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "3.3.1"
 
 [package.dependencies]
-Jinja2 = ">=2.3"
-Pygments = ">=2.0"
 alabaster = ">=0.7,<0.8"
 babel = ">=1.3"
-colorama = ">=0.3.5"
+colorama = {version = ">=0.3.5", markers = "sys_platform == \"win32\""}
 docutils = ">=0.12"
 imagesize = "*"
+Jinja2 = ">=2.3"
 packaging = "*"
+Pygments = ">=2.0"
 requests = ">=2.5.0"
-setuptools = "*"
 snowballstemmer = ">=1.1"
 sphinxcontrib-applehelp = "*"
 sphinxcontrib-devhelp = "*"
@@ -1417,112 +1408,112 @@ lint = ["flake8 (>=3.5.0)", "flake8-import-order", "mypy (>=0.790)", "docutils-s
 test = ["pytest", "pytest-cov", "html5lib", "typed-ast", "cython"]
 
 [[package]]
-category = "dev"
-description = "sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books"
 name = "sphinxcontrib-applehelp"
+version = "1.0.2"
+description = "sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "1.0.2"
 
 [package.extras]
 lint = ["flake8", "mypy", "docutils-stubs"]
 test = ["pytest"]
 
 [[package]]
-category = "dev"
-description = "sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document."
 name = "sphinxcontrib-devhelp"
+version = "1.0.2"
+description = "sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document."
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "1.0.2"
 
 [package.extras]
 lint = ["flake8", "mypy", "docutils-stubs"]
 test = ["pytest"]
 
 [[package]]
-category = "dev"
-description = "sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files"
 name = "sphinxcontrib-htmlhelp"
+version = "1.0.3"
+description = "sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "1.0.3"
 
 [package.extras]
 lint = ["flake8", "mypy", "docutils-stubs"]
 test = ["pytest", "html5lib"]
 
 [[package]]
-category = "dev"
-description = "A sphinx extension which renders display math in HTML via JavaScript"
 name = "sphinxcontrib-jsmath"
+version = "1.0.1"
+description = "A sphinx extension which renders display math in HTML via JavaScript"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
-version = "1.0.1"
 
 [package.extras]
 test = ["pytest", "flake8", "mypy"]
 
 [[package]]
-category = "dev"
-description = "sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document."
 name = "sphinxcontrib-qthelp"
-optional = false
-python-versions = ">=3.5"
 version = "1.0.3"
-
-[package.extras]
-lint = ["flake8", "mypy", "docutils-stubs"]
-test = ["pytest"]
-
-[[package]]
+description = "sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document."
 category = "dev"
-description = "sphinxcontrib-serializinghtml is a sphinx extension which outputs \"serialized\" HTML files (json and pickle)."
-name = "sphinxcontrib-serializinghtml"
 optional = false
 python-versions = ">=3.5"
-version = "1.1.4"
 
 [package.extras]
 lint = ["flake8", "mypy", "docutils-stubs"]
 test = ["pytest"]
 
 [[package]]
-category = "main"
-description = "Backported and Experimental Type Hints for Python 3.5+"
+name = "sphinxcontrib-serializinghtml"
+version = "1.1.4"
+description = "sphinxcontrib-serializinghtml is a sphinx extension which outputs \"serialized\" HTML files (json and pickle)."
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+
+[package.extras]
+lint = ["flake8", "mypy", "docutils-stubs"]
+test = ["pytest"]
+
+[[package]]
 name = "typing-extensions"
+version = "3.7.4.3"
+description = "Backported and Experimental Type Hints for Python 3.5+"
+category = "main"
 optional = false
 python-versions = "*"
-version = "3.7.4.3"
 
 [[package]]
-category = "main"
-description = "HTTP library with thread-safe connection pooling, file post, and more."
 name = "urllib3"
+version = "1.26.2"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
-version = "1.26.2"
 
 [package.extras]
 brotli = ["brotlipy (>=0.6.0)"]
 secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
-socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
-category = "main"
-description = "Python CloudWatch Logging"
 name = "watchtower"
+version = "1.0.0"
+description = "Python CloudWatch Logging"
+category = "main"
 optional = false
 python-versions = ">=3.5"
-version = "1.0.0"
 
 [package.dependencies]
 boto3 = ">=1.9.253,<2"
 
 [metadata]
-content-hash = "3da6fc77c4261ed935f63cc385b9890d1292d37109175d8d07c263208706d883"
-lock-version = "1.0"
+lock-version = "1.1"
 python-versions = "^3.7"
+content-hash = "adee828ac06f48198ffec3bd6d654d9cb0eea2c7e04178577ed42aa553c832f8"
 
 [metadata.files]
 alabaster = [
@@ -1745,9 +1736,9 @@ aws-cdk-core = [
     {file = "aws-cdk.aws-stepfunctions-1.75.0.tar.gz", hash = "sha256:0aa02598e89cecb4392dfb2e52e93eabe80d418c99c660aa2d5de8bc551407ef"},
     {file = "aws_cdk.aws_stepfunctions-1.75.0-py3-none-any.whl", hash = "sha256:d96b5d9306edbb68ba56703dad362d5b7e55cef26d12a75c0400d2d4cf742150"},
 ]
-"aws-cdk.aws-waf" = [
-    {file = "aws-cdk.aws-waf-1.75.0.tar.gz", hash = "sha256:b43f8c3298f5366bfa8da49e7beb8c2bc9ed6bcbb33ccb5a67fd265d0458ff0a"},
-    {file = "aws_cdk.aws_waf-1.75.0-py3-none-any.whl", hash = "sha256:38f40b19cf7ff5d01785cdbb8da2ff7cab0dc70424d929b3884f4e4db04dd9ae"},
+"aws-cdk.aws-wafv2" = [
+    {file = "aws-cdk.aws-wafv2-1.75.0.tar.gz", hash = "sha256:e470cd78ec9e57efee238e34b7548a01b76045b8d49a2bb39c9dcb433e3e1606"},
+    {file = "aws_cdk.aws_wafv2-1.75.0-py3-none-any.whl", hash = "sha256:b9555eaf6790dd7c4254f231bba9051ca15c7b94e00e4c56d84039c6e48f4f1e"},
 ]
 "aws-cdk.cloud-assembly-schema" = [
     {file = "aws-cdk.cloud-assembly-schema-1.75.0.tar.gz", hash = "sha256:8f524a0c553c9dc232f2583d3d43ceb95e592933bcb20a7d2b627af13d5043ec"},
