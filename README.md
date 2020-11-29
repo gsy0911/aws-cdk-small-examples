@@ -7,8 +7,8 @@ This repository contains a set of example projects for the [AWS Cloud Developmen
 The code in this repository is checked under the environment below.
 
 * [![macOS](https://img.shields.io/badge/macOS_Catalina-10.15.7-green.svg)]()
-* [![cdk-version](https://img.shields.io/badge/aws_cdk-1.73.0-green.svg)](https://formulae.brew.sh/formula/aws-cdk)
-* [![PythonVersion](https://img.shields.io/badge/python-3.8-blue.svg)](https://www.python.org/downloads/release/python-377/)
+* [![cdk-version](https://img.shields.io/badge/aws_cdk-1.75.0-green.svg)](https://formulae.brew.sh/formula/aws-cdk)
+* [![PythonVersion](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-377/)
 
 # Python examples
 

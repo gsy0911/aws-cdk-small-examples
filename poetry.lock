@@ -218,6 +218,20 @@ publication = ">=0.0.3"
 
 [[package]]
 category = "main"
+description = "The CDK Construct Library for AWS::Athena"
+name = "aws-cdk.aws-athena"
+optional = false
+python-versions = ">=3.6"
+version = "1.75.0"
+
+[package.dependencies]
+"aws-cdk.core" = "1.75.0"
+constructs = ">=3.2.0,<4.0.0"
+jsii = ">=1.14.1,<2.0.0"
+publication = ">=0.0.3"
+
+[[package]]
+category = "main"
 description = "The CDK Construct Library for AWS::AutoScaling"
 name = "aws-cdk.aws-autoscaling"
 optional = false
@@ -1023,6 +1037,20 @@ publication = ">=0.0.3"
 
 [[package]]
 category = "main"
+description = "The CDK Construct Library for AWS::WAF"
+name = "aws-cdk.aws-waf"
+optional = false
+python-versions = ">=3.6"
+version = "1.75.0"
+
+[package.dependencies]
+"aws-cdk.core" = "1.75.0"
+constructs = ">=3.2.0,<4.0.0"
+jsii = ">=1.14.1,<2.0.0"
+publication = ">=0.0.3"
+
+[[package]]
+category = "main"
 description = "Cloud Assembly Schema"
 name = "aws-cdk.cloud-assembly-schema"
 optional = false
@@ -1492,7 +1520,7 @@ version = "1.0.0"
 boto3 = ">=1.9.253,<2"
 
 [metadata]
-content-hash = "efb8caa6ce36caa49232fdb5a1f3c09c3e4ed58459710e3093f5c63511f11de7"
+content-hash = "3da6fc77c4261ed935f63cc385b9890d1292d37109175d8d07c263208706d883"
 lock-version = "1.0"
 python-versions = "^3.7"
 
@@ -1540,6 +1568,10 @@ aws-cdk-core = [
 "aws-cdk.aws-applicationautoscaling" = [
     {file = "aws-cdk.aws-applicationautoscaling-1.75.0.tar.gz", hash = "sha256:ca2e15d530cf89b05da9a44ba7782c62c073bc46560c768d70464a67b99ed081"},
     {file = "aws_cdk.aws_applicationautoscaling-1.75.0-py3-none-any.whl", hash = "sha256:3901350d371147ed044cfd775fb8d516daf381030986cb74f646b18007c6a11a"},
+]
+"aws-cdk.aws-athena" = [
+    {file = "aws-cdk.aws-athena-1.75.0.tar.gz", hash = "sha256:423cb79ba391f7c9d3bf0c2acc8cac8419f8a0312aa7309e0c684b8343d60ee8"},
+    {file = "aws_cdk.aws_athena-1.75.0-py3-none-any.whl", hash = "sha256:c91751e7d0a516b717169ac5f07dda20d808cad61fdd50262159b3296a76fe5a"},
 ]
 "aws-cdk.aws-autoscaling" = [
     {file = "aws-cdk.aws-autoscaling-1.75.0.tar.gz", hash = "sha256:96db74825798f39324b6577cbdfbf1e4fc6b203d3aa2bf449ad84299fa16a7d4"},
@@ -1712,6 +1744,10 @@ aws-cdk-core = [
 "aws-cdk.aws-stepfunctions" = [
     {file = "aws-cdk.aws-stepfunctions-1.75.0.tar.gz", hash = "sha256:0aa02598e89cecb4392dfb2e52e93eabe80d418c99c660aa2d5de8bc551407ef"},
     {file = "aws_cdk.aws_stepfunctions-1.75.0-py3-none-any.whl", hash = "sha256:d96b5d9306edbb68ba56703dad362d5b7e55cef26d12a75c0400d2d4cf742150"},
+]
+"aws-cdk.aws-waf" = [
+    {file = "aws-cdk.aws-waf-1.75.0.tar.gz", hash = "sha256:b43f8c3298f5366bfa8da49e7beb8c2bc9ed6bcbb33ccb5a67fd265d0458ff0a"},
+    {file = "aws_cdk.aws_waf-1.75.0-py3-none-any.whl", hash = "sha256:38f40b19cf7ff5d01785cdbb8da2ff7cab0dc70424d929b3884f4e4db04dd9ae"},
 ]
 "aws-cdk.cloud-assembly-schema" = [
     {file = "aws-cdk.cloud-assembly-schema-1.75.0.tar.gz", hash = "sha256:8f524a0c553c9dc232f2583d3d43ceb95e592933bcb20a7d2b627af13d5043ec"},
