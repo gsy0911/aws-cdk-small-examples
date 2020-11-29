@@ -41,7 +41,8 @@ $ cdk destroy {target_name}
 | [api-cors-lambda](./python/api-cors-lambda) | from [![aws-sample/aws-cdk-example](https://img.shields.io/badge/github-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/api-cors-lambda) |
 | [apigw-dynamodb-lambda](./python/apigw-dynamodb-lambda) | Creating DynamoDB with accessors via Lambda & via API Gateway, based on [![aws-sample/aws-cdk-example](https://img.shields.io/badge/github-aws_cdk_example-red.svg)](https://github.com/aws-samples/aws-cdk-examples/tree/master/python/dynamodb-lambda) |
 | [apigw-dynamodb-sfn-with-heavytask](./python/apigw-dynamodb-sfn-with-heavytask) | Creating DynamoDB, API Gateway, and StepFunctions to achieve quick response with API-GW and to process heavy task with SFn. |
-| [batch-stepfunctions](./python/batch-stepfunctions)  | Creating a VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
+| [batch-stepfunctions](./python/batch-stepfunctions)  | Creating VPC and AWS Batch using ECR which already pushed, and invoke AWS Batch via StepFunctions with CloudWatch Events. |
+| [batch-stepfunctions-nested](./python/batch-stepfunctions-nested)  | Creating VPC and AWS Batch, and invoke AWS Batch via StepFunctions with CloudWatch Events using NESTED. |
 | [cloudfront-s3](./python/cloudfront-s3)  | Creating a CloudFront using S3. |
 | [glue-stepfunctions](./python/glue-stepfunctions)  | Creating a Glue Job, and execute on StepFunctions. |
 | [lambda-stepfunctions](./python/lambda-stepfunctions)  | Creating a multiple Lambda with package, and invoke StepFunctions. |
