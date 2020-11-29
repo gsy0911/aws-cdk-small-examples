@@ -17,6 +17,8 @@ def main(time: str, s3_bucket: str):
         d = datetime.strptime(time, "%Y-%m-%dT%H:%M:%SZ")
         # 実行日付を取得
         execute_date = d.strftime("%Y-%m-%d")
+    else:
+        execute_date = datetime.now().strftime("%Y-%m-%d")
 
     # loggerの設定
     # loggerの名前がログストリームの名前になる
