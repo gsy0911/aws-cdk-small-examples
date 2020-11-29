@@ -2,6 +2,7 @@ from aws_cdk import (
     aws_autoscaling as autoscaling,
     aws_ec2 as ec2,
     aws_elasticloadbalancingv2 as elbv2,
+    aws_wafv2 as wafv2,
     core,
 )
 
@@ -38,6 +39,24 @@ class LoadBalancerStack(core.Stack):
 
         asg.scale_on_request_count("AModestLoad", target_requests_per_second=1)
         core.CfnOutput(self, "LoadBalancer", export_name="LoadBalancer", value=lb.load_balancer_dns_name)
+
+        # === #
+        # WAF #
+        # === #
+
+        # TODO #10 apply the web_acl to a resource
+        # no method to apply the web_acl to a resource in version 1.75.0
+        web_acl = wafv2.CfnWebACL(
+            scope_=self,
+            id="waf",
+            default_action=wafv2.CfnWebACL.DefaultActionProperty(),
+            scope="REGIONAL",
+            visibility_config=wafv2.CfnWebACL.VisibilityConfigProperty(
+                cloud_watch_metrics_enabled=True,
+                metric_name="waf-web-acl",
+                sampled_requests_enabled=True
+            )
+        )
 
 
 def main():
