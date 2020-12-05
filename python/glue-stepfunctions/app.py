@@ -76,6 +76,7 @@ class GlueStepfunctionsStack(core.Stack):
         _ = glue.CfnJob(
             scope=self,
             id=glue_job_name,
+            name=glue_job_name,
             command=glue.CfnJob.JobCommandProperty(
                 # glueetl or pythonshell
                 name=self.GLUE_JOB_COMMAND_GLUE_ETL,
