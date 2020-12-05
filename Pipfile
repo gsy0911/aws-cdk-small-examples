@@ -5,6 +5,20 @@ name = "pypi"
 
 [packages]
 aws-cdk-aws-lambda = "*"
+aws-cdk-core = "*"
+aws-cdk-aws-stepfunctions = "*"
+aws-cdk-aws-stepfunctions-tasks = "*"
+aws-cdk-aws-events-targets = "*"
+"aws-cdk.aws-ec2" = "*"
+"aws-cdk.aws-batch" = "*"
+"aws-cdk.aws-ecr" = "*"
+watchtower = "*"
+boto3 = "*"
+"aws-cdk.aws-glue" = "*"
+"aws-cdk.aws-cloudfront-origins" = "*"
+"aws-cdk.aws-s3-deployment" = "*"
+"aws-cdk.aws-athena" = "*"
+"aws-cdk.aws-wafv2" = "*"
 
 [dev-packages]
 
