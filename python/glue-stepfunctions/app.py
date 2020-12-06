@@ -43,7 +43,7 @@ class GlueStepfunctionsStack(core.Stack):
             scope=self,
             id=f"glue_s3_access_role_{stack_env}",
             role_name=f"glue_s3_access_role_{stack_env}",
-            assumed_by=iam.ServicePrincipal("lambda.amazonaws.com")
+            assumed_by=iam.ServicePrincipal("glue.amazonaws.com")
         )
 
         # add policy to access S3
@@ -72,6 +72,7 @@ class GlueStepfunctionsStack(core.Stack):
         )
 
         # glue
+        # specify the name, because `the name` deployed cannot be obtained.
         glue_job_name = f"{cfn_name}-glue-job"
         _ = glue.CfnJob(
             scope=self,
@@ -101,10 +102,13 @@ class GlueStepfunctionsStack(core.Stack):
             output_path="$"
         )
 
+        # wait until the JOB completed: sfn.IntegrationPattern.RUN_JOB
+        # process next step without waiting: sfn.IntegrationPattern.REQUEST_RESPONSE
         sfn_task_glue_job = sfn_tasks.GlueStartJobRun(
             scope=self,
             id=f"{cfn_name}-sfn-lambda-task",
             glue_job_name=glue_job_name,
+            integration_pattern=sfn.IntegrationPattern.RUN_JOB,
             input_path="$",
             result_path="$.result",
             output_path="$.output"
