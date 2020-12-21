@@ -19,6 +19,7 @@ boto3 = "*"
 "aws-cdk.aws-s3-deployment" = "*"
 "aws-cdk.aws-athena" = "*"
 "aws-cdk.aws-wafv2" = "*"
+diagrams = "*"
 
 [dev-packages]
 
