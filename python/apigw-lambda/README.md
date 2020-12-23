@@ -3,7 +3,7 @@
 
 ## generating resources
 
-![image](./pics/aws-cdk-small-examples-apigw_lambda.png)
+![image](./pics/arch.png)
 
 ## deploy
 
