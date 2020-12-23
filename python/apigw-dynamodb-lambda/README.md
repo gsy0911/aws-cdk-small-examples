@@ -6,7 +6,7 @@
 ## generating resources
 
 
-![image](./pics/aws-cdk-small-examples-apigw_dynamodb_lambda.png)
+![image](./pics/arch.png)
 
 * DynamoDB
 * Lambda

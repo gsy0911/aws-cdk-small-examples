@@ -34,11 +34,11 @@ from diagrams.aws.security import (
 def apigw_dynamodb_lambda():
     stack_objective = "apigw-dynamodb-lambda"
     with Diagram(stack_objective, outformat="png", filename=f"{stack_objective}/pics/arch", show=False):
-        APIGateway("/task") >> [
-            Edge(label="POST /example/update") >> Lambda("update status") >> Edge(label="update item"),
-            Edge(label="POST /example") >> Lambda("producer") >> Edge(label="put item"),
-            Edge(label="GET /example") >> Lambda("consumer") >> Edge(label="read all item"),
-        ] >> Dynamodb("DynamoDB")
+        apigw = APIGateway("/task")
+        dynamodb = Dynamodb("DynamoDB")
+        apigw >> Edge(label="POST /example/update") >> Lambda("update status") >> Edge(label="update item") >> dynamodb
+        apigw >> Edge(label="POST /example") >> Lambda("producer") >> Edge(label="put item") >> dynamodb
+        apigw >> Edge(label="GET /example") >> Lambda("consumer") >> Edge(label="read all item") >> dynamodb
 
 
 def apigw_lambda():
@@ -60,7 +60,7 @@ def batch_stepfunctions():
 
 
 def main():
-    # apigw_dynamodb_lambda()
+    apigw_dynamodb_lambda()
     apigw_lambda()
     batch_stepfunctions()
 
