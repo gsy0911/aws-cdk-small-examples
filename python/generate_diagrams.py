@@ -26,11 +26,14 @@ from diagrams.aws.analytics import (
 from diagrams.aws.management import (
     Cloudwatch
 )
+from diagrams.aws.security import (
+    IAMRole
+)
 
 
 def apigw_dynamodb_lambda():
     stack_objective = "apigw-dynamodb-lambda"
-    with Diagram(stack_objective, outformat="png", filename=f"{stack_objective}/pics/arch", show=False, direction="TB"):
+    with Diagram(stack_objective, outformat="png", filename=f"{stack_objective}/pics/arch", show=False):
         APIGateway("/task") >> [
             Edge(label="POST /example/update") >> Lambda("update status") >> Edge(label="update item"),
             Edge(label="POST /example") >> Lambda("producer") >> Edge(label="put item"),
@@ -46,15 +49,20 @@ def apigw_lambda():
 
 def batch_stepfunctions():
     stack_objective = "batch-stepfunctions"
-    with Diagram(stack_objective, outformat="png", filename=f"{stack_objective}/pics/arch", show=False, direction="TB"):
+    with Diagram(stack_objective, outformat="png", filename=f"{stack_objective}/pics/arch", show=False):
         with Cluster("StepFunctions"):
-            Cloudwatch("CloudWatch Event") >> Edge(label="cron") \
-                >> Batch("AWS Batch") << Edge(label="image") << EC2ContainerRegistry("ECR")
+            batch = Batch("AWS Batch")
+
+        Cloudwatch("CloudWatch Event") >> Edge(label="cron") \
+            >> batch << Edge(label="image") << EC2ContainerRegistry("ECR")
+
+        batch >> Edge(label="access through IAM Role") >> S3("S3")
 
 
 def main():
     # apigw_dynamodb_lambda()
     apigw_lambda()
+    batch_stepfunctions()
 
 
 if __name__ == "__main__":

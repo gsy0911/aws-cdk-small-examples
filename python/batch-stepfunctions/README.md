@@ -4,7 +4,7 @@
 ## generating resources
 
 
-![image](./pics/aws-cdk-small-examples-batch-stepfunction.png)
+![image](./pics/arch.png)
 
 * VPC
 * AWS Batch
