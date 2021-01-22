@@ -62,7 +62,8 @@ class ApigwDynamodbStepFunctionStack(core.Stack):
                 type=aws_dynamodb.AttributeType.STRING
             ),
             write_capacity=3,
-            read_capacity=3
+            read_capacity=3,
+            removal_policy=core.RemovalPolicy.DESTROY
         )
 
         queue = aws_sqs.Queue(self, f"{id_}-SQSQueue")

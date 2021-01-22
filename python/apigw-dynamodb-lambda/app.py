@@ -22,7 +22,8 @@ class ApigwDynamodbLambdaStack(core.Stack):
                 type=aws_dynamodb.AttributeType.STRING
             ),
             write_capacity=3,
-            read_capacity=3
+            read_capacity=3,
+            removal_policy=core.RemovalPolicy.DESTROY
         )
 
         # create producer lambda function
