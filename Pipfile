@@ -20,6 +20,7 @@ boto3 = "*"
 "aws-cdk.aws-athena" = "*"
 "aws-cdk.aws-wafv2" = "*"
 diagrams = "*"
+"aws-cdk.aws-elasticbeanstalk" = "*"
 
 [dev-packages]
 
